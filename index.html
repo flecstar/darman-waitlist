@@ -4,17 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Darman Waitlist</title>
-<meta name="description" content="US medicine for your family in Afghanistan. Order from abroad, family picks up in Afghanistan. Join the waitlist.">
-<meta property="og:title" content="Darman: US medicine for your family in Afghanistan">
-<meta property="og:description" content="Order from abroad. Your family picks it up in Afghanistan. Join the waitlist.">
+<meta name="description" content="The medicine you trust here, for your family back home. Order genuine US medicine and vitamins from abroad; family picks up in Afghanistan. Join the waitlist.">
+<meta property="og:title" content="Darman: the medicine you trust here, for your family back home">
+<meta property="og:description" content="Order genuine US medicine and vitamins from abroad. Your family picks it up in Afghanistan. Join the waitlist.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#1F3C9A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F3C9A'/%3E%3Cpath d='M16 9v14M9 16h14' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1B3480">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231B3480'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16Z' fill='%23B3261E'/%3E%3Cpath d='M16 11 L21 16 L16 21 L11 16Z' fill='%23E3A21A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;800&family=Public+Sans:wght@400;600;800&family=Vazirmatn:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;800&family=Public+Sans:wght@400;500;600;800&family=Vazirmatn:wght@400;600;800&display=swap">
 <style>
-/* Layout: one narrow centered column (max 560px). Screen 1 = headline, 3-step "how it works", one big button. Screen 2 = one question per screen with a progress bar and big tap targets. Screen 3 = done + share. */
+/* Layout: lapis header band with an Afghan kilim strip, then one narrow centered column (max 620px).
+   Intro = family headline, medicine categories with real examples, how it works, button.
+   Then one question per screen, then done + share. */
 :root {
   --bg: #FFFFFF;
   --soft: #F2F4F9;
@@ -24,6 +26,13 @@
   --brand: #1F3C9A;
   --brand-ink: #FFFFFF;
   --brand-soft: #E7ECFA;
+  --lapis: #1B3480;
+  --on-lapis: #FFFFFF;
+  --on-lapis-muted: #C9D2F2;
+  --saffron: #E3A21A;
+  --on-saffron: #1C1400;
+  --pom: #B3261E;
+  --pom-soft: #FBECEA;
   --ok: #1D7A4C;
   --err: #B42318;
   --font: 'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -40,6 +49,13 @@
     --brand: #8FA5FF;
     --brand-ink: #0C1124;
     --brand-soft: #1B2650;
+    --lapis: #13235A;
+    --on-lapis: #FFFFFF;
+    --on-lapis-muted: #B8C3EC;
+    --saffron: #F2B63A;
+    --on-saffron: #1C1400;
+    --pom: #FF8A80;
+    --pom-soft: #2E1A24;
     --ok: #5CCB8F;
     --err: #FF8F85;
     color-scheme: dark;
@@ -55,45 +71,67 @@ body {
   color: var(--ink);
   font: 400 17px/1.5 var(--font);
   -webkit-font-smoothing: antialiased;
-  padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 html[dir="rtl"] body { line-height: 1.75; }
 [hidden] { display: none !important; }
 button, input { font: inherit; color: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
 
 .col {
-  max-width: 560px;
+  max-width: 620px;
   margin-inline: auto;
   padding-left: max(18px, env(safe-area-inset-left, 0px));
   padding-right: max(18px, env(safe-area-inset-right, 0px));
 }
 
-/* Header */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 21px; letter-spacing: -0.01em; }
-.brand-mark {
-  display: grid; place-items: center;
-  width: 32px; height: 32px; border-radius: 9px;
-  background: var(--brand); color: var(--brand-ink);
+/* Lapis band + kilim strip */
+.band { background: var(--lapis); color: var(--on-lapis); padding-top: env(safe-area-inset-top, 0px); }
+.kilim {
+  height: 16px;
+  background-color: #14286E;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16' viewBox='0 0 32 16'%3E%3Crect width='32' height='16' fill='%2314286E'/%3E%3Cpath d='M16 1 L24 8 L16 15 L8 8Z' fill='%23B3261E'/%3E%3Cpath d='M16 4.5 L19.5 8 L16 11.5 L12.5 8Z' fill='%23E3A21A'/%3E%3Cpath d='M16 6.8 L17.2 8 L16 9.2 L14.8 8Z' fill='%2314286E'/%3E%3Cpath d='M0 0 L4 4 L0 8Z M32 0 L28 4 L32 8Z M0 8 L4 12 L0 16Z M32 8 L28 12 L32 16Z' fill='%23E3A21A'/%3E%3C/svg%3E");
+  background-size: 32px 16px;
+  background-repeat: repeat-x;
 }
-.lang { display: inline-flex; gap: 4px; padding: 3px; background: var(--soft); border-radius: 999px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark { flex: none; width: 30px; height: 30px; }
+.brand-name { display: grid; line-height: 1.05; }
+.brand-name b { font: 800 21px/1.05 'Public Sans', system-ui, sans-serif; letter-spacing: -0.01em; }
+.brand-name span { font: 600 13px/1.3 var(--font-rtl); color: var(--on-lapis-muted); }
+.lang { display: inline-flex; gap: 2px; padding: 3px; background: rgba(255,255,255,.12); border-radius: 999px; }
 .lang button {
   appearance: none; border: 0; background: transparent; cursor: pointer;
   min-height: 36px; padding: 6px 12px; border-radius: 999px;
-  font: 600 14px/1 'Public Sans', system-ui, sans-serif; color: var(--muted);
+  font: 600 14px/1 'Public Sans', system-ui, sans-serif; color: var(--on-lapis-muted);
 }
 .lang button.ar { font-family: var(--font-rtl); font-size: 15px; }
-.lang button[aria-pressed="true"] { background: var(--bg); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.lang button[aria-pressed="true"] { background: #FFFFFF; color: #14286E; }
 
-/* Shared */
+/* Hero */
+.hero { padding-block: 14px 34px; display: grid; gap: 16px; }
+.hero-alt { margin: 0; font: 600 17px/1.6 var(--font-rtl); color: var(--saffron); text-align: left; }
 h1 {
   margin: 0;
-  font: 800 clamp(30px, 8.5vw, 44px)/1.12 var(--font);
+  font: 800 clamp(30px, 8.4vw, 46px)/1.12 var(--font);
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
-html[dir="rtl"] h1 { line-height: 1.4; letter-spacing: 0; }
+html[dir="rtl"] h1 { line-height: 1.45; letter-spacing: 0; }
+.lede { margin: 0; font-size: 18px; color: var(--on-lapis-muted); max-width: 34em; }
+.cta {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; min-height: 58px; padding: 14px 22px; margin-top: 4px;
+  border: 0; border-radius: 14px; cursor: pointer;
+  background: var(--saffron); color: var(--on-saffron);
+  font-weight: 800; font-size: 18px;
+}
+.cta:active, .primary:active { transform: translateY(1px); }
+.hero-note { margin: 0; text-align: center; font-size: 14.5px; color: var(--on-lapis-muted); }
+
+/* Sections */
+.sec { padding-block: 34px 6px; display: grid; gap: 10px; }
 h2 {
   margin: 0;
   font: 800 clamp(23px, 6.2vw, 30px)/1.25 var(--font);
@@ -102,7 +140,46 @@ h2 {
 }
 html[dir="rtl"] h2 { line-height: 1.55; letter-spacing: 0; }
 h2:focus { outline: none; }
-.muted { color: var(--muted); }
+.muted { color: var(--muted); margin: 0; }
+
+.cats { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 560px) { .cats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cat {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; align-content: start;
+  padding: 16px; border: 1.5px solid var(--line); border-radius: 16px; background: var(--bg);
+}
+.cat-icon {
+  grid-row: span 3; display: grid; place-items: center;
+  width: 46px; height: 46px; border-radius: 13px;
+  background: var(--brand-soft); color: var(--brand);
+}
+.cat h3 { margin: 0; font-size: 17.5px; font-weight: 800; line-height: 1.3; }
+.cat-sub { margin: 0; font-size: 15px; color: var(--muted); }
+.brands { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.brands span {
+  padding: 4px 10px; border-radius: 999px; background: var(--soft);
+  font: 600 13.5px/1.35 'Public Sans', system-ui, sans-serif; direction: ltr; unicode-bidi: isolate;
+}
+.not {
+  display: flex; gap: 10px; align-items: flex-start;
+  margin: 6px 0 0; padding: 14px 16px; border-radius: 14px;
+  background: var(--pom-soft); font-size: 15.5px; font-weight: 500;
+}
+.not svg { flex: none; color: var(--pom); margin-top: 3px; }
+.fine { margin: 0; font-size: 13px; color: var(--muted); }
+
+.how { list-style: none; margin: 4px 0 0; padding: 0; display: grid; }
+.how li { display: flex; gap: 14px; align-items: flex-start; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.how li:last-child { border-bottom: 0; }
+.how-n {
+  flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--lapis); color: #FFFFFF; font-weight: 800; font-size: 15px;
+}
+.how-text b { display: block; font-size: 17px; }
+.how-text span { display: block; color: var(--muted); font-size: 15.5px; }
+.trust { list-style: none; margin: 4px 0 0; padding: 16px; display: grid; gap: 10px; background: var(--soft); border-radius: 16px; }
+.trust li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.trust svg { flex: none; color: var(--ok); }
 .primary {
   display: flex; align-items: center; justify-content: center;
   width: 100%; min-height: 58px; padding: 14px 22px;
@@ -110,27 +187,12 @@ h2:focus { outline: none; }
   background: var(--brand); color: var(--brand-ink);
   font-weight: 800; font-size: 18px; text-decoration: none; cursor: pointer;
 }
-.primary:active { transform: translateY(1px); }
 .primary[disabled] { opacity: .65; cursor: progress; }
-button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
-
-/* Screen 1: intro */
-.intro { display: grid; gap: 22px; padding-block: 18px 28px; }
-.lede { margin: 0; font-size: 18px; color: var(--muted); }
-.how { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.how li { display: flex; gap: 14px; align-items: flex-start; padding-block: 12px; border-bottom: 1px solid var(--line); }
-.how li:last-child { border-bottom: 0; }
-.how-icon {
-  flex: none; display: grid; place-items: center;
-  width: 44px; height: 44px; border-radius: 12px;
-  background: var(--brand-soft); color: var(--brand);
-}
-.how-text b { display: block; font-size: 17px; }
-.how-text span { display: block; color: var(--muted); font-size: 15.5px; }
+.end { padding-block: 26px 32px; display: grid; gap: 12px; }
 .note { margin: 0; text-align: center; font-size: 14.5px; color: var(--muted); }
 
-/* Screen 2: wizard */
-.wiz { display: grid; gap: 18px; padding-block: 6px 32px; }
+/* Wizard */
+.wiz { display: grid; gap: 18px; padding-block: 18px 32px; }
 .wiz-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .back {
   display: inline-flex; align-items: center; gap: 4px;
@@ -142,7 +204,7 @@ html[dir="rtl"] .back { padding: 8px 4px 8px 10px; }
 html[dir="rtl"] .back svg { transform: scaleX(-1); }
 .count { font-weight: 600; font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .bar { height: 6px; border-radius: 99px; background: var(--soft); overflow: hidden; }
-.bar span { display: block; height: 100%; width: 0; background: var(--brand); border-radius: 99px; transition: width .25s ease; }
+.bar span { display: block; height: 100%; width: 0; background: var(--saffron); border-radius: 99px; transition: width .25s ease; }
 .q-hint { margin: -8px 0 0; color: var(--muted); font-size: 15.5px; }
 .options { display: grid; gap: 10px; }
 .options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -156,6 +218,8 @@ html[dir="rtl"] .back svg { transform: scaleX(-1); }
 }
 .opt:hover { border-color: var(--brand); }
 .opt[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-soft); }
+.opt-text { display: grid; gap: 2px; min-width: 0; }
+.opt-sub { font-weight: 400; font-size: 14px; color: var(--muted); }
 .tick {
   flex: none; display: grid; place-items: center;
   width: 24px; height: 24px; border-radius: 50%;
@@ -174,11 +238,12 @@ html[dir="rtl"] .back svg { transform: scaleX(-1); }
 .field label { font-weight: 600; font-size: 16px; }
 .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .seg .opt { justify-content: center; min-height: 52px; }
+.hint { font-size: 14.5px; color: var(--muted); }
 .err { margin: 0; color: var(--err); font-weight: 600; font-size: 15px; }
 .privacy { margin: 0; font-size: 14px; color: var(--muted); text-align: center; }
 .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* Screen 3: done */
+/* Done */
 .done { display: grid; gap: 16px; padding-block: 32px 40px; justify-items: center; text-align: center; }
 .done-mark {
   display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%;
@@ -190,57 +255,75 @@ html[dir="rtl"] .back svg { transform: scaleX(-1); }
   display: flex; align-items: center; justify-content: center;
   width: 100%; min-height: 54px; padding: 12px 18px;
   border: 2px solid var(--line); border-radius: 14px;
-  background: var(--bg); color: var(--ink); font-weight: 700; font-size: 17px; cursor: pointer;
+  background: var(--bg); color: var(--ink); font-weight: 700; font-size: 17px; cursor: pointer; text-decoration: none;
 }
-.wa { background: #1E8E4E; color: #FFFFFF; }
+.wa { background: #1E8E4E; border-color: #1E8E4E; color: #FFFFFF; }
 
-footer { border-top: 1px solid var(--line); padding-block: 20px 28px; color: var(--muted); font-size: 13.5px; text-align: center; }
+footer { color: var(--muted); font-size: 13.5px; text-align: center; }
+footer .col { padding-block: 18px 26px; }
 footer p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
-<header class="col top">
-  <div class="brand">
-    <span class="brand-mark" aria-hidden="true">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
-    </span>
-    <span>Darman</span>
-  </div>
-  <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
-    <button type="button" data-lang="en" aria-pressed="true">EN</button>
-    <button type="button" class="ar" data-lang="fa" lang="fa" aria-pressed="false">دری</button>
-    <button type="button" class="ar" data-lang="ps" lang="ps" aria-pressed="false">پښتو</button>
-  </div>
-</header>
+<div class="band">
+  <header class="col top">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#FFFFFF" fill-opacity=".12"/><path d="M16 5 L27 16 L16 27 L5 16Z" fill="#B3261E"/><path d="M16 10.5 L21.5 16 L16 21.5 L10.5 16Z" fill="#E3A21A"/><path d="M16 14 L18 16 L16 18 L14 16Z" fill="#14286E"/></svg>
+      <div class="brand-name"><b>Darman</b><span lang="fa">درمان</span></div>
+    </div>
+    <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="ar" data-lang="fa" lang="fa" aria-pressed="false">دری</button>
+      <button type="button" class="ar" data-lang="ps" lang="ps" aria-pressed="false">پښتو</button>
+    </div>
+  </header>
 
-<main class="col">
-
-  <!-- Screen 1 -->
-  <section class="intro" id="intro">
-    <h1 data-i18n="h1">US medicine for your family in Afghanistan</h1>
-    <p class="lede" data-i18n="lede">Order from abroad. Your family picks it up in Afghanistan. Join the waitlist to hear first when we open.</p>
-    <ol class="how">
-      <li>
-        <span class="how-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></span>
-        <div class="how-text"><b data-i18n="how1_t">You order online from abroad</b><span data-i18n="how1_b">Pay by card from the US, Canada, Europe or anywhere.</span></div>
-      </li>
-      <li>
-        <span class="how-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h7"/></svg></span>
-        <div class="how-text"><b data-i18n="how2_t">Your family gets a pickup code</b><span data-i18n="how2_b">We send it by WhatsApp or SMS.</span></div>
-      </li>
-      <li>
-        <span class="how-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
-        <div class="how-text"><b data-i18n="how3_t">They pick it up in Afghanistan</b><span data-i18n="how3_b">Sealed US products. Nothing to pay at pickup.</span></div>
-      </li>
-    </ol>
-    <button class="primary" type="button" id="start" data-i18n="cta_hero">Join the waitlist</button>
-    <p class="note" data-i18n="hero_note">1 minute · Free · Not open yet</p>
+  <section class="col hero intro-part">
+    <p class="hero-alt" id="hero-alt" lang="fa" dir="rtl">داروی اصل امریکایی، برای خانواده در وطن</p>
+    <h1 data-i18n="h1">The medicine you trust here, for your family back home</h1>
+    <p class="lede" data-i18n="lede">Order genuine US medicine and vitamins from abroad. Your parents or relatives pick it up in Afghanistan, in the original box.</p>
+    <button class="cta" type="button" id="start" data-i18n="cta_hero">Join the waitlist</button>
+    <p class="hero-note" data-i18n="hero_note">1 minute · Free · Not open yet</p>
   </section>
+</div>
+<div class="kilim" aria-hidden="true"></div>
 
-  <!-- Screen 2 -->
-  <section class="wiz" id="wizard" hidden aria-live="polite">
+<main>
+  <div class="intro-part">
+    <section class="col sec" aria-labelledby="cats-h">
+      <h2 id="cats-h" data-i18n="cats_h2">What you'll be able to send</h2>
+      <p class="muted" data-i18n="cats_sub">Examples of brands sold in US pharmacies. All without a prescription.</p>
+      <div class="cats" id="cats"></div>
+      <p class="not">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <span data-i18n="not_avail">Not available: prescription medicine, like antibiotics, insulin or blood-pressure pills.</span>
+      </p>
+    </section>
+
+    <section class="col sec" aria-labelledby="how-h">
+      <h2 id="how-h" data-i18n="how_h2">How it works</h2>
+      <ol class="how">
+        <li><span class="how-n" aria-hidden="true">1</span><div class="how-text"><b data-i18n="how1_t">You order online from abroad</b><span data-i18n="how1_b">Pay by card from the US, Canada, Europe or anywhere.</span></div></li>
+        <li><span class="how-n" aria-hidden="true">2</span><div class="how-text"><b data-i18n="how2_t">Your family gets a pickup code</b><span data-i18n="how2_b">We send it by WhatsApp or SMS.</span></div></li>
+        <li><span class="how-n" aria-hidden="true">3</span><div class="how-text"><b data-i18n="how3_t">They pick it up in Afghanistan</b><span data-i18n="how3_b">They show the code and take the sealed box home.</span></div></li>
+      </ol>
+      <ul class="trust">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust1">Original US boxes, never fake</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust2">Expiry date printed on every box</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust3">Your family pays nothing at pickup</span></li>
+      </ul>
+    </section>
+
+    <section class="col end">
+      <button class="primary" type="button" id="start2" data-i18n="cta_hero">Join the waitlist</button>
+      <p class="note" data-i18n="hero_note">1 minute · Free · Not open yet</p>
+      <p class="fine" data-i18n="brand_note">Brand names are examples and belong to their owners. Darman is not affiliated with them.</p>
+    </section>
+  </div>
+
+  <section class="col wiz" id="wizard" hidden aria-live="polite">
     <div class="wiz-top">
       <button class="back" type="button" id="back">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
@@ -263,13 +346,13 @@ footer p { margin: 0; }
           <input class="input" id="f-name" autocomplete="name" maxlength="80" data-i18n-ph="ph_name" placeholder="First and last name">
         </div>
         <div class="field">
-          <label id="ct-label" data-i18n="q_contact">How should we reach you?</label>
+          <label id="ct-label" data-i18n="q_contact">Send updates by</label>
           <div class="seg" role="group" aria-labelledby="ct-label">
             <button type="button" class="opt" id="ct-wa" data-ct="whatsapp" aria-pressed="true" data-i18n="ct_whatsapp">WhatsApp</button>
             <button type="button" class="opt" id="ct-email" data-ct="email" aria-pressed="false" data-i18n="ct_email">Email</button>
           </div>
           <input class="input" id="f-contact" dir="ltr" type="tel" inputmode="tel" autocomplete="tel" maxlength="120" placeholder="+1 555 201 4477" aria-describedby="contact-hint">
-          <span class="muted" style="font-size:14.5px" id="contact-hint" data-i18n="contact_hint_wa">Include your country code</span>
+          <span class="hint" id="contact-hint" data-i18n="contact_hint_wa">Include your country code</span>
         </div>
         <div class="hp" aria-hidden="true">
           <label for="f-company">Company</label>
@@ -283,8 +366,7 @@ footer p { margin: 0; }
     <p class="privacy" id="privacy" data-i18n="privacy" hidden>We'll only contact you about the launch. We never share your details.</p>
   </section>
 
-  <!-- Screen 3 -->
-  <section class="done" id="done" hidden>
+  <section class="col done" id="done" hidden>
     <span class="done-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
     <h2 id="done-h" tabindex="-1" data-i18n="ok_h2">You're on the list.</h2>
     <p data-i18n="ok_body">We'll message you when pickup opens. Know someone who sends medicine home? Share this page with them.</p>
@@ -297,6 +379,7 @@ footer p { margin: 0; }
 </main>
 
 <footer>
+  <div class="kilim" aria-hidden="true"></div>
   <div class="col">
     <p data-i18n="footer_note">Darman is in planning. It doesn't sell or hand out medicine yet.</p>
   </div>
@@ -312,27 +395,42 @@ footer p { margin: 0; }
   var S = {
     en: {
       lang_label: "Language",
-      h1: "US medicine for your family in Afghanistan",
-      lede: "Order from abroad. Your family picks it up in Afghanistan. Join the waitlist to hear first when we open.",
+      h1: "The medicine you trust here, for your family back home",
+      lede: "Order genuine US medicine and vitamins from abroad. Your parents or relatives pick it up in Afghanistan, in the original box.",
+      cta_hero: "Join the waitlist",
+      hero_note: "1 minute · Free · Not open yet",
+      cats_h2: "What you'll be able to send",
+      cats_sub: "Examples of brands sold in US pharmacies. All without a prescription.",
+      pain_sub: "Paracetamol, ibuprofen",
+      vit_sub: "Multivitamins, vitamin D, omega-3, calcium",
+      cold_sub: "Allergy tablets, cough syrup, chest rub",
+      stomach_sub: "Antacids, diarrhea relief, heartburn relief",
+      kids_sub: "Fever and pain syrup, rehydration (ORS)",
+      skin_sub: "Wound ointment, itch cream, bandages",
+      dev_sub: "Blood pressure monitors, sugar meters, thermometers",
+      not_avail: "Not available: prescription medicine, like antibiotics, insulin or blood-pressure pills.",
+      how_h2: "How it works",
       how1_t: "You order online from abroad",
       how1_b: "Pay by card from the US, Canada, Europe or anywhere.",
       how2_t: "Your family gets a pickup code",
       how2_b: "We send it by WhatsApp or SMS.",
       how3_t: "They pick it up in Afghanistan",
-      how3_b: "Sealed US products. Nothing to pay at pickup.",
-      cta_hero: "Join the waitlist",
-      hero_note: "1 minute · Free · Not open yet",
+      how3_b: "They show the code and take the sealed box home.",
+      trust1: "Original US boxes, never fake",
+      trust2: "Expiry date printed on every box",
+      trust3: "Your family pays nothing at pickup",
+      brand_note: "Brand names are examples and belong to their owners. Darman is not affiliated with them.",
       back: "Back",
       next: "Next",
-      q_products: "What would you buy for your family?",
+      q_products: "What would you send your family?",
       q_products_hint: "Pick all that apply",
       p_pain_fever: "Pain & fever",
       p_vitamins: "Vitamins & supplements",
-      p_cold_allergy: "Cold & allergy",
+      p_cold_allergy: "Cold, cough & allergy",
       p_stomach: "Stomach & digestion",
       p_kids: "Children's medicine",
       p_skin_first_aid: "Skin care & first aid",
-      p_devices: "Health devices (blood pressure, sugar)",
+      p_devices: "Health devices",
       p_other: "Something else",
       ph_other: "What else? A specific brand, for example",
       q_freq: "How often would you order?",
@@ -372,32 +470,47 @@ footer p { margin: 0; }
       share_wa: "Share on WhatsApp",
       copy_link: "Copy link",
       copied: "Link copied",
-      share_text: "US medicine, ready for family pickup in Afghanistan. Join the Darman waitlist:",
+      share_text: "Genuine US medicine for your family in Afghanistan. Join the Darman waitlist:",
       footer_note: "Darman is in planning. It doesn't sell or hand out medicine yet."
     },
     fa: {
       lang_label: "زبان",
-      h1: "داروی امریکایی برای خانواده‌تان در افغانستان",
-      lede: "از خارج سفارش دهید و خانواده‌تان در افغانستان تحویل بگیرند. ثبت‌نام کنید تا اولین نفر از آغاز کار باخبر شوید.",
+      h1: "دوایی که اینجا به آن اعتماد دارید، برای خانواده‌تان در وطن",
+      lede: "داروی اصل امریکایی و ویتامین را از خارج سفارش دهید. پدر و مادر یا اقارب‌تان آن را در افغانستان، در قطی اصلی، تحویل می‌گیرند.",
+      cta_hero: "ثبت‌نام در فهرست انتظار",
+      hero_note: "یک دقیقه · رایگان · هنوز آغاز نشده",
+      cats_h2: "چه چیزهایی می‌توانید بفرستید",
+      cats_sub: "نمونه‌هایی از برندهایی که در دواخانه‌های امریکا فروخته می‌شوند. همه بدون نسخه.",
+      pain_sub: "پاراستامول، ایبوپروفن",
+      vit_sub: "مولتی‌ویتامین، ویتامین D، امگا ۳، کلسیم",
+      cold_sub: "تابلیت حساسیت، شربت سرفه، پماد سینه",
+      stomach_sub: "ضد تیزابیت، ضد اسهال، سوزش معده",
+      kids_sub: "شربت تب و درد، محلول ORS",
+      skin_sub: "پماد زخم، کریم خارش، پلستر زخم",
+      dev_sub: "فشارسنج، دستگاه قند خون، ترمامیتر",
+      not_avail: "موجود نیست: داروهای نسخه‌ای مانند انتی‌بیوتیک، انسولین یا تابلیت فشار خون.",
+      how_h2: "چگونه کار می‌کند",
       how1_t: "از خارج آنلاین سفارش می‌دهید",
       how1_b: "با کارت از امریکا، کانادا، اروپا یا هر جای دیگر پرداخت کنید.",
       how2_t: "خانواده‌تان کد تحویل دریافت می‌کند",
       how2_b: "کد را از طریق واتساپ یا پیامک می‌فرستیم.",
       how3_t: "در افغانستان تحویل می‌گیرند",
-      how3_b: "محصولات سربستهٔ امریکایی. هنگام تحویل پولی نمی‌پردازند.",
-      cta_hero: "ثبت‌نام در فهرست انتظار",
-      hero_note: "یک دقیقه · رایگان · هنوز آغاز نشده",
+      how3_b: "کد را نشان می‌دهند و قطی سربسته را به خانه می‌برند.",
+      trust1: "قطی اصلی امریکایی، هرگز تقلبی نیست",
+      trust2: "تاریخ انقضا روی هر قطی چاپ شده",
+      trust3: "خانواده‌تان هنگام تحویل هیچ پولی نمی‌پردازد",
+      brand_note: "نام برندها فقط نمونه است و متعلق به صاحبان آن‌هاست. درمان با آن‌ها وابستگی ندارد.",
       back: "برگشت",
       next: "بعدی",
-      q_products: "چه چیزی برای خانواده‌تان می‌خرید؟",
+      q_products: "چه چیزی برای خانواده‌تان می‌فرستید؟",
       q_products_hint: "هر چند گزینه که لازم است انتخاب کنید",
       p_pain_fever: "درد و تب",
       p_vitamins: "ویتامین و مکمل",
-      p_cold_allergy: "ریزش و حساسیت",
+      p_cold_allergy: "ریزش، سرفه و حساسیت",
       p_stomach: "معده و هاضمه",
       p_kids: "داروی اطفال",
       p_skin_first_aid: "مراقبت پوست و کمک‌های اولیه",
-      p_devices: "وسایل صحی (فشارسنج، دستگاه قند)",
+      p_devices: "وسایل صحی",
       p_other: "چیز دیگر",
       ph_other: "چه چیز دیگری؟ مثلاً یک برند مشخص",
       q_freq: "چند وقت یک‌بار سفارش می‌دهید؟",
@@ -437,32 +550,47 @@ footer p { margin: 0; }
       share_wa: "شریک کردن در واتساپ",
       copy_link: "کاپی لینک",
       copied: "لینک کاپی شد",
-      share_text: "داروی امریکایی، آماده تحویل برای خانواده در افغانستان. در فهرست انتظار درمان ثبت‌نام کنید:",
+      share_text: "داروی اصل امریکایی برای خانواده‌تان در افغانستان. در فهرست انتظار درمان ثبت‌نام کنید:",
       footer_note: "درمان در مرحلهٔ برنامه‌ریزی است و هنوز دوا نمی‌فروشد یا تحویل نمی‌دهد."
     },
     ps: {
       lang_label: "ژبه",
-      h1: "ستاسو کورنۍ ته په افغانستان کې امریکايي درمل",
-      lede: "له بهر څخه فرمایش ورکړئ، ستاسو کورنۍ به یې په افغانستان کې ترلاسه کړي. نوم ولیکئ څو د پیل پر مهال لومړی تاسو خبر شئ.",
+      h1: "هغه درمل چې دلته پرې باور لرئ، په وطن کې ستاسو کورنۍ ته",
+      lede: "اصلي امریکايي درمل او ویټامینونه له بهر څخه فرمایش کړئ. مور او پلار یا خپلوان مو یې په افغانستان کې په اصلي بسته کې ترلاسه کوي.",
+      cta_hero: "د انتظار لست کې نوم ولیکئ",
+      hero_note: "یوه دقیقه · وړیا · لا نه دی پیل شوی",
+      cats_h2: "څه شی به ولېږلی شئ",
+      cats_sub: "د هغو برانډونو بېلګې چې د امریکا په درملتونونو کې پلورل کېږي. ټول بې نسخې.",
+      pain_sub: "پاراستامول، ایبوپروفن",
+      vit_sub: "ملټي‌ویټامین، ویټامین D، اومیګا ۳، کلسیم",
+      cold_sub: "د حساسیت ګولۍ، د ټوخي شربت، د سینې مرهم",
+      stomach_sub: "د تیزابیت ضد، د نس ناستې ضد، د معدې سوځېدنه",
+      kids_sub: "د تبې او درد شربت، د ORS محلول",
+      skin_sub: "د ټپ مرهم، د خارښت کریم، پټۍ",
+      dev_sub: "د وینې د فشار ماشین، د شکرې ماشین، ترمامیټر",
+      not_avail: "نشته: د نسخې درمل لکه انټي بیوتیک، انسولین یا د وینې د فشار ګولۍ.",
+      how_h2: "دا څنګه کار کوي",
       how1_t: "له بهر څخه آنلاین فرمایش ورکوئ",
       how1_b: "له امریکا، کاناډا، اروپا یا بل هر ځای څخه په کارت پیسې ورکړئ.",
       how2_t: "ستاسو کورنۍ د ترلاسه کولو کوډ اخلي",
       how2_b: "کوډ د واټساپ یا پیغام له لارې لېږو.",
       how3_t: "په افغانستان کې یې ترلاسه کوي",
-      how3_b: "تړلي امریکايي توکي. د ترلاسه کولو پر مهال پیسې نه ورکوي.",
-      cta_hero: "د انتظار لست کې نوم ولیکئ",
-      hero_note: "یوه دقیقه · وړیا · لا نه دی پیل شوی",
+      how3_b: "کوډ ښيي او تړلې بسته کور ته وړي.",
+      trust1: "اصلي امریکايي بسته، هېڅکله جعلي نه",
+      trust2: "د پای نېټه په هره بسته چاپ شوې",
+      trust3: "ستاسو کورنۍ د ترلاسه کولو پر مهال هېڅ نه ورکوي",
+      brand_note: "د برانډونو نومونه یوازې بېلګې دي او د خپلو مالکانو دي. درمان له دوی سره تړاو نه لري.",
       back: "شاته",
       next: "بل",
-      q_products: "د کورنۍ لپاره به څه واخلئ؟",
+      q_products: "خپلې کورنۍ ته به څه ولېږئ؟",
       q_products_hint: "هر څومره چې اړین وي وټاکئ",
       p_pain_fever: "درد او تبه",
       p_vitamins: "ویټامین او مکمل",
-      p_cold_allergy: "زکام او حساسیت",
+      p_cold_allergy: "زکام، ټوخی او حساسیت",
       p_stomach: "معده او هاضمه",
       p_kids: "د ماشومانو درمل",
       p_skin_first_aid: "د پوستکي پاملرنه او لومړنۍ مرسته",
-      p_devices: "روغتیايي وسایل (د فشار او شکرې ماشین)",
+      p_devices: "روغتیايي وسایل",
       p_other: "بل څه",
       ph_other: "نور څه؟ د بېلګې په توګه یو ځانګړی برانډ",
       q_freq: "څو ځله به فرمایش ورکوئ؟",
@@ -502,16 +630,34 @@ footer p { margin: 0; }
       share_wa: "په واټساپ کې شریک کړئ",
       copy_link: "لینک کاپي کړئ",
       copied: "لینک کاپي شو",
-      share_text: "امریکايي درمل، په افغانستان کې د کورنۍ لپاره چمتو. د درمان د انتظار لست کې نوم ولیکئ:",
+      share_text: "اصلي امریکايي درمل په افغانستان کې ستاسو کورنۍ ته. د درمان د انتظار لست کې نوم ولیکئ:",
       footer_note: "درمان د پلان په پړاو کې دی او لا درمل نه پلوري او نه یې سپاري."
     }
   };
 
+  var ICONS = {
+    pain: '<rect x="2.6" y="8.6" width="18.8" height="6.8" rx="3.4" transform="rotate(-45 12 12)"/><path d="M8.6 8.6l6.8 6.8"/>',
+    vit: '<path d="M8.5 3h7v3h-7z"/><path d="M7 6h10v14.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/><path d="M10 13.5h4M12 11.5v4"/>',
+    cold: '<path d="M3 8.5h10a3 3 0 1 0-3-3"/><path d="M3 12.5h14.5a3 3 0 1 1-3 3"/><path d="M3 16.5h6"/>',
+    stomach: '<circle cx="12" cy="12" r="8.5"/><path d="M7.5 12h9"/>',
+    kids: '<circle cx="12" cy="13" r="7.5"/><path d="M9.6 12h.01M14.4 12h.01"/><path d="M9.8 15.4a3 3 0 0 0 4.4 0"/><path d="M12 5.5c0-1.6 1-2.5 2.2-2.5"/>',
+    skin: '<rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5h6v2M12 10.5v6M9 13.5h6"/>',
+    dev: '<path d="M2.5 12.5h4l2.2-5.5 4.2 10.5 2.2-5h6.4"/>'
+  };
+
+  var CATS = [
+    { v: "pain_fever", t: "p_pain_fever", sub: "pain_sub", icon: "pain", brands: ["Tylenol", "Advil", "Aleve"] },
+    { v: "vitamins", t: "p_vitamins", sub: "vit_sub", icon: "vit", brands: ["Centrum", "Nature Made", "One A Day"] },
+    { v: "cold_allergy", t: "p_cold_allergy", sub: "cold_sub", icon: "cold", brands: ["Claritin", "Zyrtec", "Mucinex", "Vicks"] },
+    { v: "stomach", t: "p_stomach", sub: "stomach_sub", icon: "stomach", brands: ["Tums", "Pepto-Bismol", "Imodium"] },
+    { v: "kids", t: "p_kids", sub: "kids_sub", icon: "kids", brands: ["Children's Tylenol", "Children's Motrin", "Pedialyte"] },
+    { v: "skin_first_aid", t: "p_skin_first_aid", sub: "skin_sub", icon: "skin", brands: ["Neosporin", "Cortizone-10", "Band-Aid"] },
+    { v: "devices", t: "p_devices", sub: "dev_sub", icon: "dev", brands: ["Omron", "Accu-Chek", "Contour Next"] }
+  ];
+
   var STEPS = [
-    { id: "products", type: "multi", q: "q_products", hint: "q_products_hint", options: [
-      ["pain_fever", "p_pain_fever"], ["vitamins", "p_vitamins"], ["cold_allergy", "p_cold_allergy"],
-      ["stomach", "p_stomach"], ["kids", "p_kids"], ["skin_first_aid", "p_skin_first_aid"],
-      ["devices", "p_devices"], ["other", "p_other"] ] },
+    { id: "products", type: "multi", q: "q_products", hint: "q_products_hint",
+      options: CATS.map(function (c) { return [c.v, c.t, c.sub]; }).concat([["other", "p_other"]]) },
     { id: "frequency", type: "single", q: "q_freq", options: [
       ["once", "f_once"], ["monthly", "f_monthly"], ["every_2_3_months", "f_every_2_3_months"] ] },
     { id: "price_10", type: "single", q: "q_price", options: [
@@ -535,7 +681,8 @@ footer p { margin: 0; }
   var answers = { products: [], frequency: null, price_10: null, pickup_city: null, country: null };
 
   var $ = function (id) { return document.getElementById(id); };
-  var intro = $("intro"), wizard = $("wizard"), done = $("done");
+  var introParts = document.querySelectorAll(".intro-part");
+  var wizard = $("wizard"), done = $("done");
   var qEl = $("q"), hintEl = $("q-hint"), optsEl = $("options"), otherEl = $("f-other");
   var contactStep = $("contact-step"), nextBtn = $("next"), errEl = $("step-err"), privacyEl = $("privacy");
   var nameEl = $("f-name"), contactEl = $("f-contact"), contactHint = $("contact-hint");
@@ -552,6 +699,26 @@ footer p { margin: 0; }
     ? location.origin + location.pathname + "?src=share" : location.href;
 
   var TICK = '<span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+
+  function renderCats() {
+    var box = $("cats");
+    box.innerHTML = "";
+    CATS.forEach(function (c) {
+      var card = document.createElement("div");
+      card.className = "cat";
+      card.innerHTML = '<span class="cat-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + ICONS[c.icon] + '</svg></span>';
+      var h = document.createElement("h3"); h.textContent = t(c.t);
+      var sub = document.createElement("p"); sub.className = "cat-sub"; sub.textContent = t(c.sub);
+      var brands = document.createElement("div"); brands.className = "brands";
+      c.brands.forEach(function (b) { var s = document.createElement("span"); s.textContent = b; brands.appendChild(s); });
+      card.appendChild(h); card.appendChild(sub); card.appendChild(brands);
+      box.appendChild(card);
+    });
+  }
+
+  function showIntro(on) {
+    introParts.forEach(function (el) { el.hidden = !on; });
+  }
 
   function showError(key) { errEl.dataset.msg = key; errEl.textContent = t(key); errEl.hidden = false; }
   function clearError() { errEl.hidden = true; }
@@ -578,10 +745,18 @@ footer p { margin: 0; }
         b.className = "opt";
         var picked = s.type === "multi" ? answers[s.id].indexOf(o[0]) > -1 : answers[s.id] === o[0];
         b.setAttribute("aria-pressed", String(picked));
-        b.dataset.value = o[0];
+        var text = document.createElement("span");
+        text.className = "opt-text";
         var label = document.createElement("span");
         label.textContent = t(o[1]);
-        b.appendChild(label);
+        text.appendChild(label);
+        if (o[2]) {
+          var sub = document.createElement("span");
+          sub.className = "opt-sub";
+          sub.textContent = t(o[2]);
+          text.appendChild(sub);
+        }
+        b.appendChild(text);
         b.insertAdjacentHTML("beforeend", TICK);
         b.addEventListener("click", function () { pick(s, o[0], b); });
         optsEl.appendChild(b);
@@ -621,9 +796,16 @@ footer p { margin: 0; }
 
   function go(n) {
     clearError();
-    if (n < 0) { wizard.hidden = true; intro.hidden = false; window.scrollTo(0, 0); return; }
+    if (n < 0) { wizard.hidden = true; showIntro(true); window.scrollTo(0, 0); return; }
     step = Math.min(n, STEPS.length - 1);
     renderStep(true);
+  }
+
+  function startWizard() {
+    showIntro(false);
+    done.hidden = true;
+    wizard.hidden = false;
+    go(step);
   }
 
   function updateContactField() {
@@ -655,7 +837,7 @@ footer p { margin: 0; }
   }
 
   function showDone() {
-    intro.hidden = true; wizard.hidden = true; done.hidden = false;
+    showIntro(false); wizard.hidden = true; done.hidden = false;
     window.scrollTo(0, 0);
     $("done-h").focus({ preventScroll: true });
   }
@@ -715,6 +897,7 @@ footer p { margin: 0; }
     lang = LANGS[next] ? next : "en";
     document.documentElement.lang = LANGS[lang].code;
     document.documentElement.dir = LANGS[lang].dir;
+    $("hero-alt").hidden = lang !== "en";
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       if (el === nextBtn && busy) return;
       el.textContent = t(el.dataset.i18n);
@@ -725,13 +908,13 @@ footer p { margin: 0; }
     if (!errEl.hidden && errEl.dataset.msg) errEl.textContent = t(errEl.dataset.msg);
     $("wa-share").href = "https://wa.me/?text=" + encodeURIComponent(t("share_text") + " " + shareUrl);
     $("share-url").value = shareUrl;
+    renderCats();
     renderStep(false);
     try { localStorage.setItem("darman-lang", lang); } catch (e) {}
   }
 
-  $("start").addEventListener("click", function () {
-    intro.hidden = true; wizard.hidden = false; go(step);
-  });
+  $("start").addEventListener("click", startWizard);
+  $("start2").addEventListener("click", startWizard);
   $("back").addEventListener("click", function () { go(step - 1); });
   nextBtn.addEventListener("click", function () {
     var s = STEPS[step];
