@@ -4,685 +4,301 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Darman Waitlist</title>
-<meta name="description" content="Genuine US medicine, ready for your family in Afghanistan. Order from abroad, family picks up sealed products. Join the waitlist.">
-<meta property="og:title" content="Darman: US medicine for family in Afghanistan">
-<meta property="og:description" content="Order from abroad. Your family picks up sealed, US-brand products in Afghanistan. Join the waitlist.">
+<meta name="description" content="US medicine for your family in Afghanistan. Order from abroad, family picks up in Afghanistan. Join the waitlist.">
+<meta property="og:title" content="Darman: US medicine for your family in Afghanistan">
+<meta property="og:description" content="Order from abroad. Your family picks it up in Afghanistan. Join the waitlist.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#142A6E">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23142A6E'/%3E%3Ccircle cx='10' cy='11' r='2' fill='%23E3A21A'/%3E%3Ccircle cx='21' cy='8' r='1.3' fill='%23E3A21A'/%3E%3Ccircle cx='23' cy='21' r='2.4' fill='%23E3A21A'/%3E%3Ccircle cx='12' cy='23' r='1.2' fill='%23E3A21A'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1F3C9A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F3C9A'/%3E%3Cpath d='M16 9v14M9 16h14' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Arabic:wght@400;600;800&family=Public+Sans:wght@400;500;600;700&family=Vazirmatn:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;800&family=Public+Sans:wght@400;600;800&family=Vazirmatn:wght@400;600;800&display=swap">
 <style>
-/* Layout: one column on phones. Full-bleed lapis band (with pyrite-gold flecks) holds the header, headline and an example pickup slip; it splits into two columns from 860px. "How it works" and the waitlist form follow on a quiet ground. */
+/* Layout: one narrow centered column (max 560px). Screen 1 = headline, 3-step "how it works", one big button. Screen 2 = one question per screen with a progress bar and big tap targets. Screen 3 = done + share. */
 :root {
-  --bg: #F5F6FA;
-  --surface: #FFFFFF;
-  --ink: #121A3A;
-  --muted: #566080;
-  --line: #DADFEC;
-  --lapis: #23409A;
-  --lapis-deep: #142A6E;
-  --on-lapis: #F3F5FF;
-  --on-lapis-muted: #BAC4EC;
-  --saffron: #E3A21A;
-  --on-saffron: #1C1400;
-  --paper: #FFFCF4;
-  --paper-ink: #1B2036;
-  --paper-muted: #5F6274;
-  --paper-line: #E2DAC4;
-  --stamp: #B26A00;
-  --chip-on-bg: #23409A;
-  --chip-on-fg: #FFFFFF;
+  --bg: #FFFFFF;
+  --soft: #F2F4F9;
+  --ink: #121A33;
+  --muted: #59627F;
+  --line: #DFE3EE;
+  --brand: #1F3C9A;
+  --brand-ink: #FFFFFF;
+  --brand-soft: #E7ECFA;
   --ok: #1D7A4C;
   --err: #B42318;
-  --font-display: 'Bricolage Grotesque', 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font: 'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-rtl: 'Vazirmatn', 'Noto Sans Arabic', Tahoma, 'Segoe UI', sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0B1026;
-    --surface: #131B3D;
-    --ink: #E8EBF7;
-    --muted: #A1A9C8;
-    --line: #28325A;
-    --lapis: #8EA4FF;
-    --lapis-deep: #0E1B4D;
-    --on-lapis: #F3F5FF;
-    --on-lapis-muted: #AEB8E4;
-    --saffron: #F2B63A;
-    --on-saffron: #1C1400;
-    --chip-on-bg: #8EA4FF;
-    --chip-on-fg: #0B1026;
+    --bg: #0C1124;
+    --soft: #161E3A;
+    --ink: #EEF1FA;
+    --muted: #A3ABC8;
+    --line: #2A3358;
+    --brand: #8FA5FF;
+    --brand-ink: #0C1124;
+    --brand-soft: #1B2650;
     --ok: #5CCB8F;
     --err: #FF8F85;
     color-scheme: dark;
   }
 }
-html[dir="rtl"] { --font-display: var(--font-rtl); --font-body: var(--font-rtl); }
+html[dir="rtl"] { --font: var(--font-rtl); }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 400 16px/1.55 var(--font-body);
+  font: 400 17px/1.5 var(--font);
   -webkit-font-smoothing: antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-html[dir="rtl"] body { line-height: 1.8; }
+html[dir="rtl"] body { line-height: 1.75; }
 [hidden] { display: none !important; }
-img, svg { max-width: 100%; }
-a { color: inherit; }
+button, input { font: inherit; color: inherit; }
 
-.wrap {
-  max-width: 1080px;
+.col {
+  max-width: 560px;
   margin-inline: auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
 }
 
-/* ---------- Lapis band ---------- */
-.band {
-  background-color: var(--lapis-deep);
-  background-image:
-    radial-gradient(rgba(242, 182, 58, .5) 1px, transparent 1.8px),
-    radial-gradient(rgba(242, 182, 58, .28) 1px, transparent 1.6px),
-    radial-gradient(rgba(255, 255, 255, .10) 0.8px, transparent 1.3px),
-    radial-gradient(120% 90% at 90% -10%, rgba(255, 255, 255, .12), transparent 60%);
-  background-size: 43px 37px, 71px 61px, 29px 31px, 100% 100%;
-  background-position: 0 0, 21px 17px, 9px 13px, 0 0;
-  color: var(--on-lapis);
-  overflow-x: clip;
-  padding-top: env(safe-area-inset-top, 0px);
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 21px; letter-spacing: -0.01em; }
+.brand-mark {
+  display: grid; place-items: center;
+  width: 32px; height: 32px; border-radius: 9px;
+  background: var(--brand); color: var(--brand-ink);
 }
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-block: 18px;
-}
-.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
-.wordmark { font: 800 24px/1 'Bricolage Grotesque', 'Public Sans', system-ui, sans-serif; letter-spacing: -0.02em; }
-.wordmark-alt { font: 600 17px/1 var(--font-rtl); color: var(--on-lapis-muted); }
-.lang {
-  display: inline-flex;
-  gap: 2px;
-  padding: 3px;
-  border: 1px solid rgba(255, 255, 255, .28);
-  border-radius: 999px;
-}
+.lang { display: inline-flex; gap: 4px; padding: 3px; background: var(--soft); border-radius: 999px; }
 .lang button {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--on-lapis-muted);
-  font: 600 13px/1 'Public Sans', system-ui, sans-serif;
-  padding: 9px 12px;
-  min-height: 36px;
-  border-radius: 999px;
-  cursor: pointer;
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  min-height: 36px; padding: 6px 12px; border-radius: 999px;
+  font: 600 14px/1 'Public Sans', system-ui, sans-serif; color: var(--muted);
 }
-.lang button.ar { font-family: var(--font-rtl); font-size: 14px; }
-.lang button[aria-pressed="true"] { background: var(--on-lapis); color: #142A6E; }
-.lang button:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
+.lang button.ar { font-family: var(--font-rtl); font-size: 15px; }
+.lang button[aria-pressed="true"] { background: var(--bg); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 
-.hero {
-  display: grid;
-  gap: 36px;
-  padding-block: 20px 52px;
-}
-@media (min-width: 860px) {
-  .hero { grid-template-columns: 1.2fr .8fr; align-items: center; padding-block: 36px 80px; gap: 48px; }
-}
-.hero-copy { min-width: 0; display: grid; gap: 20px; justify-items: start; }
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, .26);
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .04em;
-  color: var(--on-lapis-muted);
-}
-.eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--saffron); }
+/* Shared */
 h1 {
   margin: 0;
-  font: 800 clamp(2.15rem, 6.6vw, 3.7rem)/1.04 var(--font-display);
-  letter-spacing: -0.025em;
-  text-wrap: balance;
-  max-width: 15em;
-}
-html[dir="rtl"] h1 { line-height: 1.35; letter-spacing: 0; }
-.lede {
-  margin: 0;
-  max-width: 34em;
-  font-size: 1.125rem;
-  color: var(--on-lapis-muted);
-}
-.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 52px;
-  padding: 12px 24px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--saffron);
-  color: var(--on-saffron);
-  font: 700 17px/1.2 var(--font-body);
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform .15s ease, filter .15s ease;
-}
-.btn:hover { filter: brightness(1.06); }
-.btn:active { transform: translateY(1px); }
-.btn:focus-visible { outline: 3px solid var(--on-lapis); outline-offset: 3px; }
-.btn[disabled] { opacity: .7; cursor: progress; }
-.cta-note { font-size: 14px; color: var(--on-lapis-muted); }
-
-/* ---------- Pickup slip ---------- */
-.slip {
-  position: relative;
-  justify-self: center;
-  width: 100%;
-  max-width: 370px;
-  padding: 22px 22px 18px;
-  background: var(--paper);
-  color: var(--paper-ink);
-  border-radius: 16px;
-  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, .65), 0 2px 0 rgba(0, 0, 0, .06);
-  transform: rotate(-1.6deg);
-  font-family: var(--font-body);
-}
-html[dir="rtl"] .slip { transform: rotate(1.6deg); }
-.slip-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.slip-label {
-  font: 600 11.5px/1 var(--font-mono);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--paper-muted);
-}
-html[dir="rtl"] .slip-label { font: 600 13px/1.4 var(--font-rtl); letter-spacing: 0; }
-.stamp {
-  padding: 3px 9px;
-  border: 2px solid var(--stamp);
-  border-radius: 6px;
-  color: var(--stamp);
-  font: 600 12px/1.2 var(--font-mono);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  transform: rotate(4deg);
-}
-html[dir="rtl"] .stamp { font: 700 13px/1.3 var(--font-rtl); letter-spacing: 0; transform: rotate(-4deg); }
-.slip-code {
-  margin: 14px 0 4px;
-  font: 600 clamp(30px, 9vw, 38px)/1 var(--font-mono);
-  letter-spacing: .04em;
-  direction: ltr;
-  text-align: start;
-}
-html[dir="rtl"] .slip-code { text-align: right; }
-.slip-meta { margin: 0; font-size: 14px; color: var(--paper-muted); }
-.slip-meta b { color: var(--paper-ink); font-weight: 600; }
-.slip-items {
-  list-style: none;
-  margin: 16px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 8px;
-  font-size: 14.5px;
-}
-.slip-items li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--paper-line);
-}
-.slip-items li:last-child { border-bottom: 0; padding-bottom: 0; }
-.qty { font: 500 14px/1 var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--paper-muted); }
-.perf {
-  position: relative;
-  margin: 16px -22px 14px;
-  border-top: 2px dashed var(--paper-line);
-}
-.perf::before, .perf::after {
-  content: "";
-  position: absolute;
-  top: -11px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--lapis-deep);
-}
-.perf::before { left: -10px; }
-.perf::after { right: -10px; }
-.slip-paid { display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 600; font-size: 14.5px; }
-.slip-paid svg { flex: none; color: #1D7A4C; }
-.slip-show { margin: 6px 0 0; font-size: 13px; color: var(--paper-muted); }
-
-/* ---------- Sections ---------- */
-.section { padding-block: 56px; }
-.section + .section { padding-top: 8px; }
-h2 {
-  margin: 0;
-  font: 800 clamp(1.6rem, 4.4vw, 2.25rem)/1.12 var(--font-display);
+  font: 800 clamp(30px, 8.5vw, 44px)/1.12 var(--font);
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
-html[dir="rtl"] h2 { line-height: 1.45; letter-spacing: 0; }
-.steps {
-  list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 22px;
-}
-@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } }
-.step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; align-items: start; }
-.step-n {
-  grid-row: span 2;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--lapis);
-  border-radius: 50%;
-  color: var(--lapis);
-  font: 600 15px/1 var(--font-mono);
-}
-.step h3 { margin: 4px 0 0; font: 700 17.5px/1.3 var(--font-body); }
-.step p { margin: 0; color: var(--muted); }
-.trust {
-  list-style: none;
-  margin: 36px 0 0;
-  padding: 22px 0 0;
-  border-top: 1px solid var(--line);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
-}
-.trust li { display: flex; align-items: center; gap: 10px; font-weight: 500; }
-.trust svg { flex: none; color: var(--lapis); }
-
-/* ---------- Form ---------- */
-.join {
-  max-width: 740px;
-  margin-inline: auto;
-  padding: clamp(20px, 4.5vw, 40px);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  scroll-margin-top: 16px;
-}
-.join-head { display: grid; gap: 8px; margin-bottom: 28px; }
-.join-head p { margin: 0; color: var(--muted); max-width: 36em; }
-form { display: grid; gap: 30px; }
-fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 12px; }
-legend, .q-label { padding: 0; font-weight: 700; font-size: 17px; line-height: 1.4; }
-legend { margin-bottom: 12px; }
-.hint { font-weight: 400; font-size: 14px; color: var(--muted); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { position: relative; display: inline-flex; }
-.chip input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+html[dir="rtl"] h1 { line-height: 1.4; letter-spacing: 0; }
+h2 {
   margin: 0;
-  opacity: 0;
+  font: 800 clamp(23px, 6.2vw, 30px)/1.25 var(--font);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+html[dir="rtl"] h2 { line-height: 1.55; letter-spacing: 0; }
+h2:focus { outline: none; }
+.muted { color: var(--muted); }
+.primary {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; min-height: 58px; padding: 14px 22px;
+  border: 0; border-radius: 14px;
+  background: var(--brand); color: var(--brand-ink);
+  font-weight: 800; font-size: 18px; text-decoration: none; cursor: pointer;
+}
+.primary:active { transform: translateY(1px); }
+.primary[disabled] { opacity: .65; cursor: progress; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+/* Screen 1: intro */
+.intro { display: grid; gap: 22px; padding-block: 18px 28px; }
+.lede { margin: 0; font-size: 18px; color: var(--muted); }
+.how { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.how li { display: flex; gap: 14px; align-items: flex-start; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.how li:last-child { border-bottom: 0; }
+.how-icon {
+  flex: none; display: grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--brand-soft); color: var(--brand);
+}
+.how-text b { display: block; font-size: 17px; }
+.how-text span { display: block; color: var(--muted); font-size: 15.5px; }
+.note { margin: 0; text-align: center; font-size: 14.5px; color: var(--muted); }
+
+/* Screen 2: wizard */
+.wiz { display: grid; gap: 18px; padding-block: 6px 32px; }
+.wiz-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.back {
+  display: inline-flex; align-items: center; gap: 4px;
+  min-height: 44px; padding: 8px 10px 8px 4px; margin-inline-start: -4px;
+  border: 0; background: transparent; cursor: pointer;
+  font-weight: 600; font-size: 16px; color: var(--muted);
+}
+html[dir="rtl"] .back { padding: 8px 4px 8px 10px; }
+html[dir="rtl"] .back svg { transform: scaleX(-1); }
+.count { font-weight: 600; font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { height: 6px; border-radius: 99px; background: var(--soft); overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: var(--brand); border-radius: 99px; transition: width .25s ease; }
+.q-hint { margin: -8px 0 0; color: var(--muted); font-size: 15.5px; }
+.options { display: grid; gap: 10px; }
+.options.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.opt {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 100%; min-height: 58px; padding: 12px 16px;
+  border: 2px solid var(--line); border-radius: 14px;
+  background: var(--bg); color: var(--ink);
+  font-weight: 600; font-size: 17px; line-height: 1.3; text-align: start;
   cursor: pointer;
 }
-.chip span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 9px 15px;
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  background: var(--bg);
-  font-weight: 500;
-  line-height: 1.25;
-  transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+.opt:hover { border-color: var(--brand); }
+.opt[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-soft); }
+.tick {
+  flex: none; display: grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 2px solid var(--line); color: transparent;
 }
-.chip:hover span { border-color: var(--lapis); }
-.chip input:checked + span { background: var(--chip-on-bg); border-color: var(--chip-on-bg); color: var(--chip-on-fg); }
-.chip input[type="checkbox"]:checked + span::before { content: "✓"; font-weight: 700; }
-.chip input:focus-visible + span { outline: 3px solid var(--saffron); outline-offset: 2px; }
-.row2 { display: grid; gap: 22px; }
-@media (min-width: 640px) { .row2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
-.field { display: grid; gap: 10px; min-width: 0; }
-.input, select.input {
-  width: 100%;
-  min-height: 50px;
-  padding: 11px 14px;
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
-  background: var(--bg);
-  color: var(--ink);
-  font: 400 16px/1.3 var(--font-body);
+.multi .tick { border-radius: 7px; }
+.opt[aria-pressed="true"] .tick { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.input {
+  width: 100%; min-height: 56px; padding: 12px 16px;
+  border: 2px solid var(--line); border-radius: 14px;
+  background: var(--bg); color: var(--ink); font-size: 17px;
 }
-.input:focus { outline: 3px solid color-mix(in srgb, var(--saffron) 55%, transparent); outline-offset: 1px; border-color: var(--lapis); }
+.input:focus { outline: none; border-color: var(--brand); }
 .input[dir="ltr"] { font-family: 'Public Sans', system-ui, sans-serif; }
-.err { margin: 0; color: var(--err); font-size: 14.5px; font-weight: 500; }
-.submit-row { display: grid; gap: 12px; }
-.submit-row .btn { width: 100%; min-height: 56px; }
-@media (min-width: 640px) { .submit-row .btn { width: auto; justify-self: start; padding-inline: 34px; } }
-.privacy { margin: 0; font-size: 14px; color: var(--muted); }
+.field { display: grid; gap: 8px; }
+.field label { font-weight: 600; font-size: 16px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.seg .opt { justify-content: center; min-height: 52px; }
+.err { margin: 0; color: var(--err); font-weight: 600; font-size: 15px; }
+.privacy { margin: 0; font-size: 14px; color: var(--muted); text-align: center; }
 .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-.success { display: grid; gap: 14px; justify-items: start; }
-.success-mark {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--ok) 16%, transparent);
-  color: var(--ok);
+/* Screen 3: done */
+.done { display: grid; gap: 16px; padding-block: 32px 40px; justify-items: center; text-align: center; }
+.done-mark {
+  display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%;
+  background: color-mix(in srgb, var(--ok) 15%, transparent); color: var(--ok);
 }
-.success h2:focus { outline: none; }
-.success p { margin: 0; color: var(--muted); max-width: 34em; }
-.share { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; margin-top: 6px; }
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 10px 18px;
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--ink);
-  font: 600 15px/1.2 var(--font-body);
-  text-decoration: none;
-  cursor: pointer;
+.done p { margin: 0; color: var(--muted); }
+.share { display: grid; gap: 10px; width: 100%; margin-top: 8px; }
+.ghost {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; min-height: 54px; padding: 12px 18px;
+  border: 2px solid var(--line); border-radius: 14px;
+  background: var(--bg); color: var(--ink); font-weight: 700; font-size: 17px; cursor: pointer;
 }
-.btn-ghost:hover { border-color: var(--lapis); }
-.btn-ghost:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
-.share-url { flex: 1 1 220px; min-width: 0; min-height: 48px; font-size: 14px; }
+.wa { background: #1E8E4E; color: #FFFFFF; }
 
-/* ---------- FAQ + footer ---------- */
-.faq { max-width: 740px; margin-inline: auto; }
-.faq h2 { margin-bottom: 12px; }
-details { border-bottom: 1px solid var(--line); }
-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding-block: 16px;
-  font-weight: 700;
-  font-size: 17px;
-  cursor: pointer;
-  list-style: none;
-}
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; font: 500 22px/1 var(--font-mono); color: var(--lapis); transition: transform .15s ease; }
-details[open] summary::after { transform: rotate(45deg); }
-summary:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; border-radius: 6px; }
-details p { margin: 0 0 18px; color: var(--muted); max-width: 40em; }
-footer { border-top: 1px solid var(--line); padding-block: 26px 34px; color: var(--muted); font-size: 14px; }
+footer { border-top: 1px solid var(--line); padding-block: 20px 28px; color: var(--muted); font-size: 13.5px; text-align: center; }
 footer p { margin: 0; }
-footer p + p { margin-top: 6px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
-<header class="band">
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="#top" aria-label="Darman">
-        <span class="wordmark">Darman</span>
-        <span class="wordmark-alt" lang="fa">درمان</span>
-      </a>
-      <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" class="ar" data-lang="fa" lang="fa" aria-pressed="false">دری</button>
-        <button type="button" class="ar" data-lang="ps" lang="ps" aria-pressed="false">پښتو</button>
-      </div>
-    </div>
-
-    <div class="hero" id="top">
-      <div class="hero-copy">
-        <span class="eyebrow" data-i18n="eyebrow">Coming soon · Waitlist</span>
-        <h1 data-i18n="h1">Genuine US medicine, ready for your family in Afghanistan.</h1>
-        <p class="lede" data-i18n="lede">Order from anywhere abroad. Your family picks it up at our counter in Afghanistan, sealed and in its original US packaging.</p>
-        <div class="cta-row">
-          <a class="btn" href="#join" data-i18n="cta_hero">Join the waitlist</a>
-          <span class="cta-note" data-i18n="cta_note">1 minute · Free</span>
-        </div>
-      </div>
-
-      <aside class="slip" aria-label="Example pickup slip">
-        <div class="slip-top">
-          <span class="slip-label" data-i18n="slip_label">Pickup slip</span>
-          <span class="stamp" data-i18n="slip_stamp">Example</span>
-        </div>
-        <p class="slip-code"><bdi>KBL-4821</bdi></p>
-        <p class="slip-meta"><span data-i18n="slip_counter_k">Counter</span>: <b data-i18n="slip_counter_v">Kabul</b></p>
-        <ul class="slip-items">
-          <li><span data-i18n="slip_item1">Pain reliever 500 mg · 100 tablets</span><bdi class="qty">×2</bdi></li>
-          <li><span data-i18n="slip_item2">Multivitamin, adults 50+</span><bdi class="qty">×1</bdi></li>
-          <li><span data-i18n="slip_item3">Allergy relief · 30 tablets</span><bdi class="qty">×1</bdi></li>
-        </ul>
-        <div class="perf" aria-hidden="true"></div>
-        <p class="slip-paid">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span data-i18n="slip_paid">Paid abroad · nothing due at pickup</span>
-        </p>
-        <p class="slip-show" data-i18n="slip_show">Show this code at the counter</p>
-      </aside>
-    </div>
+<header class="col top">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg>
+    </span>
+    <span>Darman</span>
+  </div>
+  <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" class="ar" data-lang="fa" lang="fa" aria-pressed="false">دری</button>
+    <button type="button" class="ar" data-lang="ps" lang="ps" aria-pressed="false">پښتو</button>
   </div>
 </header>
 
-<main>
-  <section class="section" aria-labelledby="how-h">
-    <div class="wrap">
-      <h2 id="how-h" data-i18n="how_h2">How it will work</h2>
-      <ol class="steps">
-        <li class="step">
-          <span class="step-n" aria-hidden="true">1</span>
-          <h3 data-i18n="s1_t">You order online</h3>
-          <p data-i18n="s1_b">Choose genuine US brands and pay by card from the US, Canada, Europe or anywhere abroad.</p>
-        </li>
-        <li class="step">
-          <span class="step-n" aria-hidden="true">2</span>
-          <h3 data-i18n="s2_t">Your family gets a code</h3>
-          <p data-i18n="s2_b">We send a pickup code to your family by WhatsApp or SMS.</p>
-        </li>
-        <li class="step">
-          <span class="step-n" aria-hidden="true">3</span>
-          <h3 data-i18n="s3_t">They pick it up</h3>
-          <p data-i18n="s3_b">They show the code and collect sealed products. Nothing to pay at pickup.</p>
-        </li>
-      </ol>
-      <ul class="trust">
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust1">Original US packaging</span></li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust2">Batch number and expiry on every box</span></li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="trust3">The same brands sold in US pharmacies</span></li>
-      </ul>
-    </div>
+<main class="col">
+
+  <!-- Screen 1 -->
+  <section class="intro" id="intro">
+    <h1 data-i18n="h1">US medicine for your family in Afghanistan</h1>
+    <p class="lede" data-i18n="lede">Order from abroad. Your family picks it up in Afghanistan. Join the waitlist to hear first when we open.</p>
+    <ol class="how">
+      <li>
+        <span class="how-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></span>
+        <div class="how-text"><b data-i18n="how1_t">You order online from abroad</b><span data-i18n="how1_b">Pay by card from the US, Canada, Europe or anywhere.</span></div>
+      </li>
+      <li>
+        <span class="how-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h7"/></svg></span>
+        <div class="how-text"><b data-i18n="how2_t">Your family gets a pickup code</b><span data-i18n="how2_b">We send it by WhatsApp or SMS.</span></div>
+      </li>
+      <li>
+        <span class="how-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+        <div class="how-text"><b data-i18n="how3_t">They pick it up in Afghanistan</b><span data-i18n="how3_b">Sealed US products. Nothing to pay at pickup.</span></div>
+      </li>
+    </ol>
+    <button class="primary" type="button" id="start" data-i18n="cta_hero">Join the waitlist</button>
+    <p class="note" data-i18n="hero_note">1 minute · Free · Not open yet</p>
   </section>
 
-  <section class="section" aria-labelledby="join-h">
-    <div class="wrap">
-      <div class="join" id="join">
-        <div class="join-head" id="join-head">
-          <h2 id="join-h" data-i18n="join_h2">Join the waitlist</h2>
-          <p data-i18n="join_sub">Answer a few quick questions so we stock what your family actually needs.</p>
+  <!-- Screen 2 -->
+  <section class="wiz" id="wizard" hidden aria-live="polite">
+    <div class="wiz-top">
+      <button class="back" type="button" id="back">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        <span data-i18n="back">Back</span>
+      </button>
+      <span class="count" id="count">1 / 6</span>
+    </div>
+    <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+
+    <h2 id="q" tabindex="-1"></h2>
+    <p class="q-hint" id="q-hint" hidden></p>
+
+    <div class="options" id="options"></div>
+    <input class="input" id="f-other" maxlength="300" data-i18n-ph="ph_other" placeholder="What else? A specific brand, for example" hidden>
+
+    <div id="contact-step" hidden>
+      <div style="display:grid; gap:18px">
+        <div class="field">
+          <label for="f-name" data-i18n="q_name">Your name</label>
+          <input class="input" id="f-name" autocomplete="name" maxlength="80" data-i18n-ph="ph_name" placeholder="First and last name">
         </div>
-
-        <form id="waitlist" novalidate>
-          <fieldset>
-            <legend><span data-i18n="q_products">What would you buy for your family?</span> <span class="hint" data-i18n="q_products_hint">Pick all that apply</span></legend>
-            <div class="chips">
-              <label class="chip"><input type="checkbox" id="p-pain" name="products" value="pain_fever"><span data-i18n="p_pain_fever">Pain &amp; fever</span></label>
-              <label class="chip"><input type="checkbox" id="p-vit" name="products" value="vitamins"><span data-i18n="p_vitamins">Vitamins &amp; supplements</span></label>
-              <label class="chip"><input type="checkbox" id="p-cold" name="products" value="cold_allergy"><span data-i18n="p_cold_allergy">Cold &amp; allergy</span></label>
-              <label class="chip"><input type="checkbox" id="p-stomach" name="products" value="stomach"><span data-i18n="p_stomach">Stomach &amp; digestion</span></label>
-              <label class="chip"><input type="checkbox" id="p-kids" name="products" value="kids"><span data-i18n="p_kids">Children's medicine</span></label>
-              <label class="chip"><input type="checkbox" id="p-skin" name="products" value="skin_first_aid"><span data-i18n="p_skin_first_aid">Skin care &amp; first aid</span></label>
-              <label class="chip"><input type="checkbox" id="p-devices" name="products" value="devices"><span data-i18n="p_devices">Health devices (blood pressure, glucose)</span></label>
-              <label class="chip"><input type="checkbox" id="p-other" name="products" value="other"><span data-i18n="p_other">Something else</span></label>
-            </div>
-            <input class="input" id="f-other" name="other_products" maxlength="300" data-i18n-ph="ph_other" placeholder="What else? A specific brand, for example" hidden>
-            <p class="err" data-err="products" role="alert" hidden></p>
-          </fieldset>
-
-          <fieldset>
-            <legend data-i18n="q_freq">How often would you order?</legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" id="fr-once" name="frequency" value="once"><span data-i18n="f_once">Just once</span></label>
-              <label class="chip"><input type="radio" id="fr-month" name="frequency" value="monthly"><span data-i18n="f_monthly">Every month</span></label>
-              <label class="chip"><input type="radio" id="fr-23" name="frequency" value="every_2_3_months"><span data-i18n="f_every_2_3_months">Every 2–3 months</span></label>
-            </div>
-            <p class="err" data-err="frequency" role="alert" hidden></p>
-          </fieldset>
-
-          <fieldset>
-            <legend data-i18n="q_price">A product costs $10 at a US store. What would you pay to have it ready for pickup in Afghanistan?</legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" id="pr-1" name="price_10" value="12_15"><span data-i18n="pr_12_15">$12–15</span></label>
-              <label class="chip"><input type="radio" id="pr-2" name="price_10" value="16_20"><span data-i18n="pr_16_20">$16–20</span></label>
-              <label class="chip"><input type="radio" id="pr-3" name="price_10" value="21_25"><span data-i18n="pr_21_25">$21–25</span></label>
-              <label class="chip"><input type="radio" id="pr-4" name="price_10" value="25_plus"><span data-i18n="pr_25_plus">More than $25</span></label>
-              <label class="chip"><input type="radio" id="pr-5" name="price_10" value="would_not_buy"><span data-i18n="pr_would_not_buy">Only the US price</span></label>
-            </div>
-            <p class="err" data-err="price_10" role="alert" hidden></p>
-          </fieldset>
-
-          <fieldset>
-            <legend><span data-i18n="q_spend">About how much do you spend on your family's medicine each month?</span> <span class="hint" data-i18n="optional">(optional)</span></legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" id="sp-1" name="monthly_spend" value="under_25"><span data-i18n="sp_under_25">Under $25</span></label>
-              <label class="chip"><input type="radio" id="sp-2" name="monthly_spend" value="25_50"><span data-i18n="sp_25_50">$25–50</span></label>
-              <label class="chip"><input type="radio" id="sp-3" name="monthly_spend" value="50_100"><span data-i18n="sp_50_100">$50–100</span></label>
-              <label class="chip"><input type="radio" id="sp-4" name="monthly_spend" value="100_plus"><span data-i18n="sp_100_plus">Over $100</span></label>
-            </div>
-          </fieldset>
-
-          <div class="row2">
-            <div class="field">
-              <label class="q-label" for="f-city" data-i18n="q_city">Where would your family pick up?</label>
-              <select class="input" id="f-city" name="pickup_city">
-                <option value="" data-i18n="ph_city">Choose a city</option>
-                <option value="Kabul" data-i18n="city_kabul">Kabul</option>
-                <option value="Herat" data-i18n="city_herat">Herat</option>
-                <option value="Mazar-i-Sharif" data-i18n="city_mazar">Mazar-i-Sharif</option>
-                <option value="Kandahar" data-i18n="city_kandahar">Kandahar</option>
-                <option value="Jalalabad" data-i18n="city_jalalabad">Jalalabad</option>
-                <option value="Kunduz" data-i18n="city_kunduz">Kunduz</option>
-                <option value="Ghazni" data-i18n="city_ghazni">Ghazni</option>
-                <option value="Other" data-i18n="city_other">Another city</option>
-              </select>
-              <p class="err" data-err="pickup_city" role="alert" hidden></p>
-            </div>
-            <div class="field">
-              <label class="q-label" for="f-country" data-i18n="q_country">Where do you live?</label>
-              <select class="input" id="f-country" name="country">
-                <option value="" data-i18n="ph_country">Choose a country</option>
-                <option value="United States" data-i18n="c_us">United States</option>
-                <option value="Canada" data-i18n="c_ca">Canada</option>
-                <option value="United Kingdom" data-i18n="c_uk">United Kingdom</option>
-                <option value="Germany" data-i18n="c_de">Germany</option>
-                <option value="Netherlands" data-i18n="c_nl">Netherlands</option>
-                <option value="Sweden" data-i18n="c_se">Sweden</option>
-                <option value="Australia" data-i18n="c_au">Australia</option>
-                <option value="UAE" data-i18n="c_ae">UAE</option>
-                <option value="Turkiye" data-i18n="c_tr">Türkiye</option>
-                <option value="Other" data-i18n="c_other">Another country</option>
-              </select>
-              <p class="err" data-err="country" role="alert" hidden></p>
-            </div>
+        <div class="field">
+          <label id="ct-label" data-i18n="q_contact">How should we reach you?</label>
+          <div class="seg" role="group" aria-labelledby="ct-label">
+            <button type="button" class="opt" id="ct-wa" data-ct="whatsapp" aria-pressed="true" data-i18n="ct_whatsapp">WhatsApp</button>
+            <button type="button" class="opt" id="ct-email" data-ct="email" aria-pressed="false" data-i18n="ct_email">Email</button>
           </div>
-
-          <div class="field">
-            <label class="q-label" for="f-name" data-i18n="q_name">Your name</label>
-            <input class="input" id="f-name" name="name" autocomplete="name" maxlength="80" data-i18n-ph="ph_name" placeholder="First and last name">
-            <p class="err" data-err="name" role="alert" hidden></p>
-          </div>
-
-          <fieldset>
-            <legend data-i18n="q_contact">How should we reach you?</legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" id="ct-wa" name="contact_type" value="whatsapp" checked><span data-i18n="ct_whatsapp">WhatsApp</span></label>
-              <label class="chip"><input type="radio" id="ct-email" name="contact_type" value="email"><span data-i18n="ct_email">Email</span></label>
-            </div>
-            <label class="hint" for="f-contact" id="contact-hint" data-i18n="contact_hint_wa">Include your country code</label>
-            <input class="input" id="f-contact" name="contact" dir="ltr" type="tel" inputmode="tel" autocomplete="tel" maxlength="120" placeholder="+1 555 201 4477">
-            <p class="err" data-err="contact" role="alert" hidden></p>
-          </fieldset>
-
-          <div class="hp" aria-hidden="true">
-            <label for="f-company">Company</label>
-            <input id="f-company" name="company" tabindex="-1" autocomplete="off">
-          </div>
-
-          <div class="submit-row">
-            <button class="btn" type="submit" id="submit" data-i18n="submit">Join the waitlist</button>
-            <p class="err" id="net-err" role="alert" hidden></p>
-            <p class="privacy" data-i18n="privacy">We'll only contact you about the launch. We never share your details.</p>
-          </div>
-        </form>
-
-        <div class="success" id="success" hidden>
-          <span class="success-mark" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </span>
-          <h2 tabindex="-1" id="ok-h" data-i18n="ok_h2">You're on the list.</h2>
-          <p data-i18n="ok_body">We'll message you when pickup opens. Know someone who sends medicine home? Share this page with them.</p>
-          <div class="share">
-            <a class="btn" id="wa-share" href="#" target="_blank" rel="noopener" data-i18n="share_wa">Share on WhatsApp</a>
-            <button class="btn-ghost" type="button" id="copy-btn" data-i18n="copy_link">Copy link</button>
-            <input class="input share-url" id="share-url" dir="ltr" readonly aria-label="Page link">
-          </div>
+          <input class="input" id="f-contact" dir="ltr" type="tel" inputmode="tel" autocomplete="tel" maxlength="120" placeholder="+1 555 201 4477" aria-describedby="contact-hint">
+          <span class="muted" style="font-size:14.5px" id="contact-hint" data-i18n="contact_hint_wa">Include your country code</span>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="f-company">Company</label>
+          <input id="f-company" tabindex="-1" autocomplete="off">
         </div>
       </div>
     </div>
+
+    <p class="err" id="step-err" role="alert" hidden></p>
+    <button class="primary" type="button" id="next" hidden data-i18n="next">Next</button>
+    <p class="privacy" id="privacy" data-i18n="privacy" hidden>We'll only contact you about the launch. We never share your details.</p>
   </section>
 
-  <section class="section" aria-labelledby="faq-h">
-    <div class="wrap">
-      <div class="faq">
-        <h2 id="faq-h" data-i18n="faq_h2">Questions</h2>
-        <details>
-          <summary data-i18n="faq1_q">Can I order now?</summary>
-          <p data-i18n="faq1_a">Not yet. We're measuring interest before we open. Join the list and you'll hear first.</p>
-        </details>
-        <details>
-          <summary data-i18n="faq2_q">Will you carry prescription medicine?</summary>
-          <p data-i18n="faq2_a">We're starting with over-the-counter medicine, vitamins and health devices.</p>
-        </details>
-        <details>
-          <summary data-i18n="faq3_q">Which cities?</summary>
-          <p data-i18n="faq3_a">Kabul first. Your answers decide where we open next.</p>
-        </details>
-      </div>
+  <!-- Screen 3 -->
+  <section class="done" id="done" hidden>
+    <span class="done-mark" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <h2 id="done-h" tabindex="-1" data-i18n="ok_h2">You're on the list.</h2>
+    <p data-i18n="ok_body">We'll message you when pickup opens. Know someone who sends medicine home? Share this page with them.</p>
+    <div class="share">
+      <a class="ghost wa" id="wa-share" href="#" target="_blank" rel="noopener" data-i18n="share_wa">Share on WhatsApp</a>
+      <button class="ghost" type="button" id="copy-btn" data-i18n="copy_link">Copy link</button>
+      <input class="input" id="share-url" dir="ltr" readonly aria-label="Page link" style="font-size:14px; text-align:center">
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="col">
     <p data-i18n="footer_note">Darman is in planning. It doesn't sell or hand out medicine yet.</p>
-    <p>© 2026 Darman</p>
   </div>
 </footer>
 
@@ -696,32 +312,18 @@ footer p + p { margin-top: 6px; }
   var S = {
     en: {
       lang_label: "Language",
-      eyebrow: "Coming soon · Waitlist",
-      h1: "Genuine US medicine, ready for your family in Afghanistan.",
-      lede: "Order from anywhere abroad. Your family picks it up at our counter in Afghanistan, sealed and in its original US packaging.",
+      h1: "US medicine for your family in Afghanistan",
+      lede: "Order from abroad. Your family picks it up in Afghanistan. Join the waitlist to hear first when we open.",
+      how1_t: "You order online from abroad",
+      how1_b: "Pay by card from the US, Canada, Europe or anywhere.",
+      how2_t: "Your family gets a pickup code",
+      how2_b: "We send it by WhatsApp or SMS.",
+      how3_t: "They pick it up in Afghanistan",
+      how3_b: "Sealed US products. Nothing to pay at pickup.",
       cta_hero: "Join the waitlist",
-      cta_note: "1 minute · Free",
-      slip_label: "Pickup slip",
-      slip_stamp: "Example",
-      slip_counter_k: "Counter",
-      slip_counter_v: "Kabul",
-      slip_item1: "Pain reliever 500 mg · 100 tablets",
-      slip_item2: "Multivitamin, adults 50+",
-      slip_item3: "Allergy relief · 30 tablets",
-      slip_paid: "Paid abroad · nothing due at pickup",
-      slip_show: "Show this code at the counter",
-      how_h2: "How it will work",
-      s1_t: "You order online",
-      s1_b: "Choose genuine US brands and pay by card from the US, Canada, Europe or anywhere abroad.",
-      s2_t: "Your family gets a code",
-      s2_b: "We send a pickup code to your family by WhatsApp or SMS.",
-      s3_t: "They pick it up",
-      s3_b: "They show the code and collect sealed products. Nothing to pay at pickup.",
-      trust1: "Original US packaging",
-      trust2: "Batch number and expiry on every box",
-      trust3: "The same brands sold in US pharmacies",
-      join_h2: "Join the waitlist",
-      join_sub: "Answer a few quick questions so we stock what your family actually needs.",
+      hero_note: "1 minute · Free · Not open yet",
+      back: "Back",
+      next: "Next",
       q_products: "What would you buy for your family?",
       q_products_hint: "Pick all that apply",
       p_pain_fever: "Pain & fever",
@@ -730,92 +332,63 @@ footer p + p { margin-top: 6px; }
       p_stomach: "Stomach & digestion",
       p_kids: "Children's medicine",
       p_skin_first_aid: "Skin care & first aid",
-      p_devices: "Health devices (blood pressure, glucose)",
+      p_devices: "Health devices (blood pressure, sugar)",
       p_other: "Something else",
       ph_other: "What else? A specific brand, for example",
       q_freq: "How often would you order?",
       f_once: "Just once",
       f_monthly: "Every month",
       f_every_2_3_months: "Every 2–3 months",
-      q_price: "A product costs $10 at a US store. What would you pay to have it ready for pickup in Afghanistan?",
+      q_price: "Something costs $10 at a US store. What would you pay to have it ready in Afghanistan?",
       pr_12_15: "$12–15",
       pr_16_20: "$16–20",
       pr_21_25: "$21–25",
       pr_25_plus: "More than $25",
       pr_would_not_buy: "Only the US price",
-      q_spend: "About how much do you spend on your family's medicine each month?",
-      optional: "(optional)",
-      sp_under_25: "Under $25",
-      sp_25_50: "$25–50",
-      sp_50_100: "$50–100",
-      sp_100_plus: "Over $100",
-      q_city: "Where would your family pick up?",
-      ph_city: "Choose a city",
+      q_city: "Which city would your family pick up in?",
       city_kabul: "Kabul", city_herat: "Herat", city_mazar: "Mazar-i-Sharif", city_kandahar: "Kandahar",
       city_jalalabad: "Jalalabad", city_kunduz: "Kunduz", city_ghazni: "Ghazni", city_other: "Another city",
-      q_country: "Where do you live?",
-      ph_country: "Choose a country",
+      q_country: "Which country do you live in?",
       c_us: "United States", c_ca: "Canada", c_uk: "United Kingdom", c_de: "Germany", c_nl: "Netherlands",
       c_se: "Sweden", c_au: "Australia", c_ae: "UAE", c_tr: "Türkiye", c_other: "Another country",
+      q_last: "Last step: how can we reach you?",
       q_name: "Your name",
       ph_name: "First and last name",
-      q_contact: "How should we reach you?",
+      q_contact: "Send updates by",
       ct_whatsapp: "WhatsApp",
       ct_email: "Email",
       contact_hint_wa: "Include your country code",
-      contact_hint_email: "Your email address",
+      contact_hint_email: "We'll email you when we open",
       submit: "Join the waitlist",
       submitting: "Saving…",
       privacy: "We'll only contact you about the launch. We never share your details.",
-      err_required: "Please answer this question.",
-      err_products: "Pick at least one.",
+      err_pick: "Pick at least one to continue.",
       err_phone: "Enter your WhatsApp number with the country code, like +1 555 201 4477.",
       err_email: "Enter a valid email address.",
       err_name: "Enter your name.",
-      err_network: "Your answers weren't saved. Check your connection and tap Join again.",
+      err_network: "Your answers weren't saved. Check your connection and tap the button again.",
       ok_h2: "You're on the list.",
       ok_body: "We'll message you when pickup opens. Know someone who sends medicine home? Share this page with them.",
       share_wa: "Share on WhatsApp",
       copy_link: "Copy link",
       copied: "Link copied",
-      share_text: "Genuine US medicine, ready for family pickup in Afghanistan. Join the Darman waitlist:",
-      faq_h2: "Questions",
-      faq1_q: "Can I order now?",
-      faq1_a: "Not yet. We're measuring interest before we open. Join the list and you'll hear first.",
-      faq2_q: "Will you carry prescription medicine?",
-      faq2_a: "We're starting with over-the-counter medicine, vitamins and health devices.",
-      faq3_q: "Which cities?",
-      faq3_a: "Kabul first. Your answers decide where we open next.",
+      share_text: "US medicine, ready for family pickup in Afghanistan. Join the Darman waitlist:",
       footer_note: "Darman is in planning. It doesn't sell or hand out medicine yet."
     },
     fa: {
       lang_label: "زبان",
-      eyebrow: "به‌زودی · فهرست انتظار",
-      h1: "داروی اصلی امریکایی، آماده برای خانواده‌تان در افغانستان.",
-      lede: "از هر کشوری سفارش دهید. خانواده‌تان آن را از محل تحویل ما در افغانستان دریافت می‌کنند؛ سربسته و در بسته‌بندی اصلی امریکایی.",
+      h1: "داروی امریکایی برای خانواده‌تان در افغانستان",
+      lede: "از خارج سفارش دهید و خانواده‌تان در افغانستان تحویل بگیرند. ثبت‌نام کنید تا اولین نفر از آغاز کار باخبر شوید.",
+      how1_t: "از خارج آنلاین سفارش می‌دهید",
+      how1_b: "با کارت از امریکا، کانادا، اروپا یا هر جای دیگر پرداخت کنید.",
+      how2_t: "خانواده‌تان کد تحویل دریافت می‌کند",
+      how2_b: "کد را از طریق واتساپ یا پیامک می‌فرستیم.",
+      how3_t: "در افغانستان تحویل می‌گیرند",
+      how3_b: "محصولات سربستهٔ امریکایی. هنگام تحویل پولی نمی‌پردازند.",
       cta_hero: "ثبت‌نام در فهرست انتظار",
-      cta_note: "یک دقیقه · رایگان",
-      slip_label: "رسید تحویل",
-      slip_stamp: "نمونه",
-      slip_counter_k: "محل تحویل",
-      slip_counter_v: "کابل",
-      slip_item1: "مسکن ۵۰۰ ملی‌گرام · ۱۰۰ تابلیت",
-      slip_item2: "مولتی‌ویتامین بزرگسالان ۵۰+",
-      slip_item3: "ضد حساسیت · ۳۰ تابلیت",
-      slip_paid: "پرداخت از خارج · هنگام تحویل پولی نمی‌پردازند",
-      slip_show: "این کد را در محل تحویل نشان دهید",
-      how_h2: "چگونه کار خواهد کرد",
-      s1_t: "شما آنلاین سفارش می‌دهید",
-      s1_b: "برندهای اصلی امریکایی را انتخاب کنید و از امریکا، کانادا، اروپا یا هر جای دیگر با کارت پرداخت کنید.",
-      s2_t: "خانواده‌تان کد دریافت می‌کند",
-      s2_b: "کد تحویل را از طریق واتساپ یا پیامک برای خانواده‌تان می‌فرستیم.",
-      s3_t: "آن‌ها تحویل می‌گیرند",
-      s3_b: "کد را نشان می‌دهند و محصولات سربسته را می‌گیرند. هنگام تحویل هیچ پولی لازم نیست.",
-      trust1: "بسته‌بندی اصلی امریکایی",
-      trust2: "شماره بچ و تاریخ انقضا روی هر قطی",
-      trust3: "همان برندهایی که در دواخانه‌های امریکا فروخته می‌شوند",
-      join_h2: "در فهرست انتظار ثبت‌نام کنید",
-      join_sub: "به چند سؤال کوتاه پاسخ دهید تا همان چیزی را آماده کنیم که خانواده‌تان نیاز دارند.",
+      hero_note: "یک دقیقه · رایگان · هنوز آغاز نشده",
+      back: "برگشت",
+      next: "بعدی",
       q_products: "چه چیزی برای خانواده‌تان می‌خرید؟",
       q_products_hint: "هر چند گزینه که لازم است انتخاب کنید",
       p_pain_fever: "درد و تب",
@@ -831,85 +404,56 @@ footer p + p { margin-top: 6px; }
       f_once: "فقط یک بار",
       f_monthly: "هر ماه",
       f_every_2_3_months: "هر ۲ تا ۳ ماه",
-      q_price: "یک محصول در فروشگاه‌های امریکا ۱۰ دالر است. حاضرید چقدر بپردازید تا در افغانستان آماده تحویل باشد؟",
+      q_price: "یک جنس در فروشگاه امریکا ۱۰ دالر است. حاضرید چقدر بپردازید تا در افغانستان آماده باشد؟",
       pr_12_15: "۱۲ تا ۱۵ دالر",
       pr_16_20: "۱۶ تا ۲۰ دالر",
       pr_21_25: "۲۱ تا ۲۵ دالر",
       pr_25_plus: "بیشتر از ۲۵ دالر",
       pr_would_not_buy: "فقط به قیمت امریکا",
-      q_spend: "ماهانه تقریباً چقدر برای دوای خانواده‌تان خرج می‌کنید؟",
-      optional: "(اختیاری)",
-      sp_under_25: "کمتر از ۲۵ دالر",
-      sp_25_50: "۲۵ تا ۵۰ دالر",
-      sp_50_100: "۵۰ تا ۱۰۰ دالر",
-      sp_100_plus: "بیشتر از ۱۰۰ دالر",
       q_city: "خانواده‌تان در کدام شهر تحویل می‌گیرند؟",
-      ph_city: "شهر را انتخاب کنید",
       city_kabul: "کابل", city_herat: "هرات", city_mazar: "مزار شریف", city_kandahar: "قندهار",
       city_jalalabad: "جلال‌آباد", city_kunduz: "کندز", city_ghazni: "غزنی", city_other: "شهر دیگر",
       q_country: "شما در کدام کشور زندگی می‌کنید؟",
-      ph_country: "کشور را انتخاب کنید",
       c_us: "امریکا", c_ca: "کانادا", c_uk: "بریتانیا", c_de: "آلمان", c_nl: "هالند",
       c_se: "سویدن", c_au: "آسترالیا", c_ae: "امارات", c_tr: "ترکیه", c_other: "کشور دیگر",
+      q_last: "مرحلهٔ آخر: چطور با شما تماس بگیریم؟",
       q_name: "نام شما",
       ph_name: "نام و تخلص",
-      q_contact: "چگونه با شما تماس بگیریم؟",
+      q_contact: "خبرها را از این راه بفرستید",
       ct_whatsapp: "واتساپ",
       ct_email: "ایمیل",
       contact_hint_wa: "با کد کشور بنویسید",
-      contact_hint_email: "آدرس ایمیل شما",
+      contact_hint_email: "وقتی آغاز کردیم به شما ایمیل می‌فرستیم",
       submit: "ثبت‌نام در فهرست انتظار",
       submitting: "در حال ثبت…",
       privacy: "فقط دربارهٔ آغاز کار با شما تماس می‌گیریم. معلومات شما با کسی شریک نمی‌شود.",
-      err_required: "لطفاً به این سؤال پاسخ دهید.",
-      err_products: "دست‌کم یک گزینه را انتخاب کنید.",
+      err_pick: "برای ادامه دست‌کم یک گزینه را انتخاب کنید.",
       err_phone: "شماره واتساپ را با کد کشور بنویسید، مثلاً ‎+1 555 201 4477‎.",
       err_email: "یک آدرس ایمیل درست بنویسید.",
       err_name: "نام خود را بنویسید.",
-      err_network: "پاسخ‌های شما ثبت نشد. اتصال انترنت را بررسی کنید و دوباره امتحان کنید.",
+      err_network: "پاسخ‌های شما ثبت نشد. اتصال انترنت را بررسی کنید و دوباره دکمه را بزنید.",
       ok_h2: "شما در فهرست انتظار هستید.",
       ok_body: "وقتی تحویل آغاز شد، به شما پیام می‌دهیم. کسی را می‌شناسید که برای خانواده‌اش دوا می‌فرستد؟ این صفحه را با او شریک کنید.",
       share_wa: "شریک کردن در واتساپ",
       copy_link: "کاپی لینک",
       copied: "لینک کاپی شد",
-      share_text: "داروی اصلی امریکایی، آماده تحویل برای خانواده در افغانستان. در فهرست انتظار درمان ثبت‌نام کنید:",
-      faq_h2: "پرسش‌ها",
-      faq1_q: "آیا همین حالا می‌توانم سفارش دهم؟",
-      faq1_a: "هنوز نه. پیش از آغاز کار، علاقه‌مندی مردم را جمع می‌کنیم. ثبت‌نام کنید تا اولین کسی باشید که خبر می‌شود.",
-      faq2_q: "آیا داروی نسخه‌ای هم خواهید داشت؟",
-      faq2_a: "کار را با داروهای بدون نسخه، ویتامین‌ها و وسایل صحی آغاز می‌کنیم.",
-      faq3_q: "در کدام شهرها؟",
-      faq3_a: "اول کابل. پاسخ‌های شما تعیین می‌کند که بعد در کجا باز کنیم.",
+      share_text: "داروی امریکایی، آماده تحویل برای خانواده در افغانستان. در فهرست انتظار درمان ثبت‌نام کنید:",
       footer_note: "درمان در مرحلهٔ برنامه‌ریزی است و هنوز دوا نمی‌فروشد یا تحویل نمی‌دهد."
     },
     ps: {
       lang_label: "ژبه",
-      eyebrow: "ډېر ژر · د انتظار لست",
-      h1: "اصلي امریکايي درمل، په افغانستان کې ستاسو کورنۍ ته چمتو.",
-      lede: "له هر هېواد څخه فرمایش ورکړئ. ستاسو کورنۍ به یې په افغانستان کې زموږ د سپارلو له ځای څخه ترلاسه کړي؛ تړلي او په اصلي امریکايي بسته‌بندۍ کې.",
+      h1: "ستاسو کورنۍ ته په افغانستان کې امریکايي درمل",
+      lede: "له بهر څخه فرمایش ورکړئ، ستاسو کورنۍ به یې په افغانستان کې ترلاسه کړي. نوم ولیکئ څو د پیل پر مهال لومړی تاسو خبر شئ.",
+      how1_t: "له بهر څخه آنلاین فرمایش ورکوئ",
+      how1_b: "له امریکا، کاناډا، اروپا یا بل هر ځای څخه په کارت پیسې ورکړئ.",
+      how2_t: "ستاسو کورنۍ د ترلاسه کولو کوډ اخلي",
+      how2_b: "کوډ د واټساپ یا پیغام له لارې لېږو.",
+      how3_t: "په افغانستان کې یې ترلاسه کوي",
+      how3_b: "تړلي امریکايي توکي. د ترلاسه کولو پر مهال پیسې نه ورکوي.",
       cta_hero: "د انتظار لست کې نوم ولیکئ",
-      cta_note: "یوه دقیقه · وړیا",
-      slip_label: "د ترلاسه کولو رسید",
-      slip_stamp: "بېلګه",
-      slip_counter_k: "د سپارلو ځای",
-      slip_counter_v: "کابل",
-      slip_item1: "د درد ضد ۵۰۰ ملي‌ګرامه · ۱۰۰ ګولۍ",
-      slip_item2: "ملټي‌ویټامین، د ۵۰+ کلنو لپاره",
-      slip_item3: "د حساسیت ضد · ۳۰ ګولۍ",
-      slip_paid: "پیسې له بهره ورکړل شوې · د ترلاسه کولو پر مهال هېڅ نه ورکوي",
-      slip_show: "دا کوډ د سپارلو په ځای کې وښیئ",
-      how_h2: "دا به څنګه کار کوي",
-      s1_t: "تاسو آنلاین فرمایش ورکوئ",
-      s1_b: "اصلي امریکايي برانډونه وټاکئ او له امریکا، کاناډا، اروپا یا بل هر ځای څخه په کارت پیسې ورکړئ.",
-      s2_t: "ستاسو کورنۍ کوډ ترلاسه کوي",
-      s2_b: "موږ ستاسو کورنۍ ته د ترلاسه کولو کوډ د واټساپ یا پیغام له لارې لېږو.",
-      s3_t: "هغوی یې ترلاسه کوي",
-      s3_b: "کوډ ښيي او تړلي توکي اخلي. د ترلاسه کولو پر مهال هېڅ پیسې نه ورکوي.",
-      trust1: "اصلي امریکايي بسته‌بندي",
-      trust2: "د بچ شمېره او د پای نېټه په هره ډبه",
-      trust3: "هماغه برانډونه چې د امریکا په درملتونونو کې پلورل کېږي",
-      join_h2: "د انتظار لست کې نوم ولیکئ",
-      join_sub: "څو لنډو پوښتنو ته ځواب ورکړئ، څو هغه څه چمتو کړو چې ستاسو کورنۍ ورته اړتیا لري.",
+      hero_note: "یوه دقیقه · وړیا · لا نه دی پیل شوی",
+      back: "شاته",
+      next: "بل",
       q_products: "د کورنۍ لپاره به څه واخلئ؟",
       q_products_hint: "هر څومره چې اړین وي وټاکئ",
       p_pain_fever: "درد او تبه",
@@ -925,330 +469,310 @@ footer p + p { margin-top: 6px; }
       f_once: "یوازې یو ځل",
       f_monthly: "هره میاشت",
       f_every_2_3_months: "هر ۲ تر ۳ میاشتو کې",
-      q_price: "یو توکی د امریکا په پلورنځيو کې ۱۰ ډالره دی. څومره به ورکړئ چې په افغانستان کې د ترلاسه کولو لپاره چمتو وي؟",
+      q_price: "یو شی د امریکا په پلورنځي کې ۱۰ ډالره دی. څومره به ورکړئ چې په افغانستان کې چمتو وي؟",
       pr_12_15: "۱۲ تر ۱۵ ډالره",
       pr_16_20: "۱۶ تر ۲۰ ډالره",
       pr_21_25: "۲۱ تر ۲۵ ډالره",
       pr_25_plus: "له ۲۵ ډالرو زیات",
       pr_would_not_buy: "یوازې د امریکا په بیه",
-      q_spend: "په میاشت کې نږدې څومره د کورنۍ په درملو لګوئ؟",
-      optional: "(اختیاري)",
-      sp_under_25: "له ۲۵ ډالرو کم",
-      sp_25_50: "۲۵ تر ۵۰ ډالره",
-      sp_50_100: "۵۰ تر ۱۰۰ ډالره",
-      sp_100_plus: "له ۱۰۰ ډالرو زیات",
       q_city: "ستاسو کورنۍ به په کوم ښار کې ترلاسه کوي؟",
-      ph_city: "ښار وټاکئ",
       city_kabul: "کابل", city_herat: "هرات", city_mazar: "مزار شریف", city_kandahar: "کندهار",
       city_jalalabad: "جلال‌آباد", city_kunduz: "کندز", city_ghazni: "غزني", city_other: "بل ښار",
       q_country: "تاسو په کوم هېواد کې اوسېږئ؟",
-      ph_country: "هېواد وټاکئ",
       c_us: "امریکا", c_ca: "کاناډا", c_uk: "بریتانیا", c_de: "جرمني", c_nl: "هالنډ",
       c_se: "سویډن", c_au: "آسټرالیا", c_ae: "امارات", c_tr: "ترکیه", c_other: "بل هېواد",
+      q_last: "وروستی ګام: له تاسو سره څنګه اړیکه ونیسو؟",
       q_name: "ستاسو نوم",
       ph_name: "نوم او تخلص",
-      q_contact: "له تاسو سره څنګه اړیکه ونیسو؟",
+      q_contact: "خبرونه د دې لارې ولېږئ",
       ct_whatsapp: "واټساپ",
       ct_email: "ایمېل",
       contact_hint_wa: "د هېواد له کوډ سره یې ولیکئ",
-      contact_hint_email: "ستاسو د ایمېل آدرس",
+      contact_hint_email: "کله چې پیل وکړو، تاسو ته به ایمېل درولېږو",
       submit: "د انتظار لست کې نوم ولیکئ",
       submitting: "ثبتېږي…",
       privacy: "یوازې د پیل په اړه به درسره اړیکه ونیسو. ستاسو معلومات له بل چا سره نه شریکېږي.",
-      err_required: "مهرباني وکړئ دې پوښتنې ته ځواب ورکړئ.",
-      err_products: "لږ تر لږه یو وټاکئ.",
+      err_pick: "د دوام لپاره لږ تر لږه یو وټاکئ.",
       err_phone: "خپله د واټساپ شمېره د هېواد له کوډ سره ولیکئ، لکه ‎+1 555 201 4477‎.",
       err_email: "یو سم ایمېل آدرس ولیکئ.",
       err_name: "خپل نوم ولیکئ.",
-      err_network: "ستاسو ځوابونه ثبت نه شول. انټرنېټ وګورئ او بیا هڅه وکړئ.",
+      err_network: "ستاسو ځوابونه ثبت نه شول. انټرنېټ وګورئ او بیا تڼۍ کېکاږئ.",
       ok_h2: "تاسو د انتظار په لست کې یاست.",
       ok_body: "کله چې ترلاسه کول پیل شي، تاسو ته به پیغام درکړو. څوک پېژنئ چې خپلې کورنۍ ته درمل لېږي؟ دا پاڼه ورسره شریکه کړئ.",
       share_wa: "په واټساپ کې شریک کړئ",
       copy_link: "لینک کاپي کړئ",
       copied: "لینک کاپي شو",
-      share_text: "اصلي امریکايي درمل، په افغانستان کې د کورنۍ لپاره چمتو. د درمان د انتظار لست کې نوم ولیکئ:",
-      faq_h2: "پوښتنې",
-      faq1_q: "ایا همدا اوس فرمایش ورکولی شم؟",
-      faq1_a: "لا نه. د پیل نه مخکې د خلکو علاقه راټولوو. نوم ولیکئ څو لومړی تاسو ته خبر درکړو.",
-      faq2_q: "ایا د نسخې درمل به هم ولرئ؟",
-      faq2_a: "کار به له بې نسخې درملو، ویټامینونو او روغتیايي وسایلو پیل کړو.",
-      faq3_q: "په کومو ښارونو کې؟",
-      faq3_a: "لومړی کابل. ستاسو ځوابونه ټاکي چې وروسته چېرته پرانیزو.",
+      share_text: "امریکايي درمل، په افغانستان کې د کورنۍ لپاره چمتو. د درمان د انتظار لست کې نوم ولیکئ:",
       footer_note: "درمان د پلان په پړاو کې دی او لا درمل نه پلوري او نه یې سپاري."
     }
   };
 
-  var LANGS = {
-    en: { code: "en", dir: "ltr" },
-    fa: { code: "fa-AF", dir: "rtl" },
-    ps: { code: "ps-AF", dir: "rtl" }
-  };
+  var STEPS = [
+    { id: "products", type: "multi", q: "q_products", hint: "q_products_hint", options: [
+      ["pain_fever", "p_pain_fever"], ["vitamins", "p_vitamins"], ["cold_allergy", "p_cold_allergy"],
+      ["stomach", "p_stomach"], ["kids", "p_kids"], ["skin_first_aid", "p_skin_first_aid"],
+      ["devices", "p_devices"], ["other", "p_other"] ] },
+    { id: "frequency", type: "single", q: "q_freq", options: [
+      ["once", "f_once"], ["monthly", "f_monthly"], ["every_2_3_months", "f_every_2_3_months"] ] },
+    { id: "price_10", type: "single", q: "q_price", options: [
+      ["12_15", "pr_12_15"], ["16_20", "pr_16_20"], ["21_25", "pr_21_25"],
+      ["25_plus", "pr_25_plus"], ["would_not_buy", "pr_would_not_buy"] ] },
+    { id: "pickup_city", type: "single", q: "q_city", two: true, options: [
+      ["Kabul", "city_kabul"], ["Herat", "city_herat"], ["Mazar-i-Sharif", "city_mazar"], ["Kandahar", "city_kandahar"],
+      ["Jalalabad", "city_jalalabad"], ["Kunduz", "city_kunduz"], ["Ghazni", "city_ghazni"], ["Other", "city_other"] ] },
+    { id: "country", type: "single", q: "q_country", two: true, options: [
+      ["United States", "c_us"], ["Canada", "c_ca"], ["United Kingdom", "c_uk"], ["Germany", "c_de"],
+      ["Netherlands", "c_nl"], ["Sweden", "c_se"], ["Australia", "c_au"], ["UAE", "c_ae"],
+      ["Turkiye", "c_tr"], ["Other", "c_other"] ] },
+    { id: "contact", type: "contact", q: "q_last" }
+  ];
 
+  var LANGS = { en: { code: "en", dir: "ltr" }, fa: { code: "fa-AF", dir: "rtl" }, ps: { code: "ps-AF", dir: "rtl" } };
   var lang = "en";
+  var step = 0;
   var busy = false;
+  var contactType = "whatsapp";
+  var answers = { products: [], frequency: null, price_10: null, pickup_city: null, country: null };
 
-  var form = document.getElementById("waitlist");
-  var submitBtn = document.getElementById("submit");
-  var netErr = document.getElementById("net-err");
-  var otherInput = document.getElementById("f-other");
-  var contactInput = document.getElementById("f-contact");
-  var contactHint = document.getElementById("contact-hint");
-  var success = document.getElementById("success");
-  var joinHead = document.getElementById("join-head");
-  var waShare = document.getElementById("wa-share");
-  var copyBtn = document.getElementById("copy-btn");
-  var shareInput = document.getElementById("share-url");
+  var $ = function (id) { return document.getElementById(id); };
+  var intro = $("intro"), wizard = $("wizard"), done = $("done");
+  var qEl = $("q"), hintEl = $("q-hint"), optsEl = $("options"), otherEl = $("f-other");
+  var contactStep = $("contact-step"), nextBtn = $("next"), errEl = $("step-err"), privacyEl = $("privacy");
+  var nameEl = $("f-name"), contactEl = $("f-contact"), contactHint = $("contact-hint");
 
   function t(key) {
     var table = S[lang] || S.en;
-    if (Object.prototype.hasOwnProperty.call(table, key)) return table[key];
-    return S.en[key] || "";
+    return Object.prototype.hasOwnProperty.call(table, key) ? table[key] : (S.en[key] || "");
+  }
+  function digits(n) {
+    var s = String(n);
+    return lang === "en" ? s : s.replace(/\d/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[+d]; });
+  }
+  var shareUrl = (location.protocol === "http:" || location.protocol === "https:")
+    ? location.origin + location.pathname + "?src=share" : location.href;
+
+  var TICK = '<span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>';
+
+  function showError(key) { errEl.dataset.msg = key; errEl.textContent = t(key); errEl.hidden = false; }
+  function clearError() { errEl.hidden = true; }
+
+  function renderStep(focus) {
+    var s = STEPS[step];
+    $("count").textContent = digits(step + 1) + " / " + digits(STEPS.length);
+    $("bar").style.width = ((step + 1) / STEPS.length * 100) + "%";
+    qEl.textContent = t(s.q);
+    hintEl.hidden = !s.hint;
+    if (s.hint) hintEl.textContent = t(s.hint);
+
+    optsEl.innerHTML = "";
+    optsEl.className = "options" + (s.two ? " two" : "") + (s.type === "multi" ? " multi" : "");
+    optsEl.hidden = s.type === "contact";
+    contactStep.hidden = s.type !== "contact";
+    privacyEl.hidden = s.type !== "contact";
+    otherEl.hidden = !(s.id === "products" && answers.products.indexOf("other") > -1);
+
+    if (s.type !== "contact") {
+      s.options.forEach(function (o) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "opt";
+        var picked = s.type === "multi" ? answers[s.id].indexOf(o[0]) > -1 : answers[s.id] === o[0];
+        b.setAttribute("aria-pressed", String(picked));
+        b.dataset.value = o[0];
+        var label = document.createElement("span");
+        label.textContent = t(o[1]);
+        b.appendChild(label);
+        b.insertAdjacentHTML("beforeend", TICK);
+        b.addEventListener("click", function () { pick(s, o[0], b); });
+        optsEl.appendChild(b);
+      });
+    }
+
+    nextBtn.hidden = s.type === "single";
+    nextBtn.dataset.i18n = s.type === "contact" ? "submit" : "next";
+    if (!busy) nextBtn.textContent = t(nextBtn.dataset.i18n);
+    updateContactField();
+
+    if (focus) {
+      window.scrollTo(0, 0);
+      qEl.focus({ preventScroll: true });
+    }
   }
 
-  var shareUrl = (function () {
-    if (location.protocol === "http:" || location.protocol === "https:") {
-      return location.origin + location.pathname + "?src=share";
+  function pick(s, value, btn) {
+    clearError();
+    if (s.type === "multi") {
+      var list = answers[s.id];
+      var i = list.indexOf(value);
+      if (i > -1) list.splice(i, 1); else list.push(value);
+      btn.setAttribute("aria-pressed", String(i === -1));
+      if (value === "other") {
+        otherEl.hidden = i > -1;
+        if (i === -1) otherEl.focus();
+      }
+      return;
     }
-    return location.href;
-  })();
+    answers[s.id] = value;
+    optsEl.querySelectorAll(".opt").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b === btn));
+    });
+    setTimeout(function () { go(step + 1); }, 220);
+  }
 
-  function contactType() {
-    var el = form.querySelector('input[name="contact_type"]:checked');
-    return el ? el.value : "whatsapp";
+  function go(n) {
+    clearError();
+    if (n < 0) { wizard.hidden = true; intro.hidden = false; window.scrollTo(0, 0); return; }
+    step = Math.min(n, STEPS.length - 1);
+    renderStep(true);
   }
 
   function updateContactField() {
-    var type = contactType();
-    if (type === "email") {
-      contactInput.type = "email";
-      contactInput.inputMode = "email";
-      contactInput.autocomplete = "email";
-      contactInput.placeholder = "name@example.com";
+    $("ct-wa").setAttribute("aria-pressed", String(contactType === "whatsapp"));
+    $("ct-email").setAttribute("aria-pressed", String(contactType === "email"));
+    if (contactType === "email") {
+      contactEl.type = "email"; contactEl.inputMode = "email"; contactEl.autocomplete = "email";
+      contactEl.placeholder = "name@example.com";
       contactHint.dataset.i18n = "contact_hint_email";
     } else {
-      contactInput.type = "tel";
-      contactInput.inputMode = "tel";
-      contactInput.autocomplete = "tel";
-      contactInput.placeholder = "+1 555 201 4477";
+      contactEl.type = "tel"; contactEl.inputMode = "tel"; contactEl.autocomplete = "tel";
+      contactEl.placeholder = "+1 555 201 4477";
       contactHint.dataset.i18n = "contact_hint_wa";
     }
     contactHint.textContent = t(contactHint.dataset.i18n);
   }
 
-  function updateShare() {
-    waShare.href = "https://wa.me/?text=" + encodeURIComponent(t("share_text") + " " + shareUrl);
-    shareInput.value = shareUrl;
-  }
-
-  function applyLang(next) {
-    lang = LANGS[next] ? next : "en";
-    var root = document.documentElement;
-    root.lang = LANGS[lang].code;
-    root.dir = LANGS[lang].dir;
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      if (el === submitBtn && busy) return;
-      el.textContent = t(el.dataset.i18n);
-    });
-    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
-      el.placeholder = t(el.dataset.i18nPh);
-    });
-    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
-      el.setAttribute("aria-label", t(el.dataset.i18nAria));
-    });
-    document.querySelectorAll(".err:not([hidden])").forEach(function (el) {
-      if (el.dataset.msg) el.textContent = t(el.dataset.msg);
-    });
-    document.querySelectorAll(".lang button").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
-    });
-    updateContactField();
-    updateShare();
-    try { localStorage.setItem("darman-lang", lang); } catch (e) {}
-  }
-
-  function errEl(name) {
-    return form.querySelector('[data-err="' + name + '"]');
-  }
-
-  function showErr(name, msgKey) {
-    var el = errEl(name);
-    if (!el) return;
-    el.dataset.msg = msgKey;
-    el.textContent = t(msgKey);
-    el.hidden = false;
-  }
-
-  function hideErr(name) {
-    var el = errEl(name);
-    if (el) el.hidden = true;
-  }
-
   function toLatinDigits(s) {
-    return s
-      .replace(/[۰-۹]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); })
-      .replace(/[٠-٩]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); });
-  }
-
-  function normalizePhone(raw) {
-    var c = toLatinDigits(raw).replace(/[\s\-().‎‏]/g, "");
-    if (c.indexOf("00") === 0) c = "+" + c.slice(2);
-    return c;
-  }
-
-  function validate(fd) {
-    var firstBad = null;
-    function bad(name, msgKey, focusEl) {
-      showErr(name, msgKey);
-      if (!firstBad) firstBad = focusEl;
-    }
-    ["products", "frequency", "price_10", "pickup_city", "country", "name", "contact"].forEach(hideErr);
-
-    if (fd.getAll("products").length === 0) bad("products", "err_products", document.getElementById("p-pain"));
-    if (!fd.get("frequency")) bad("frequency", "err_required", document.getElementById("fr-once"));
-    if (!fd.get("price_10")) bad("price_10", "err_required", document.getElementById("pr-1"));
-    if (!fd.get("pickup_city")) bad("pickup_city", "err_required", document.getElementById("f-city"));
-    if (!fd.get("country")) bad("country", "err_required", document.getElementById("f-country"));
-    if (!String(fd.get("name") || "").trim()) bad("name", "err_name", document.getElementById("f-name"));
-
-    var raw = String(fd.get("contact") || "").trim();
-    var contact = "";
-    if (contactType() === "email") {
-      contact = toLatinDigits(raw);
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) bad("contact", "err_email", contactInput);
-    } else {
-      contact = normalizePhone(raw);
-      if (!/^\+\d{7,15}$/.test(contact)) bad("contact", "err_phone", contactInput);
-    }
-    return { ok: !firstBad, focus: firstBad, contact: contact };
+    return s.replace(/[۰-۹]/g, function (d) { return String(d.charCodeAt(0) - 0x06F0); })
+            .replace(/[٠-٩]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); });
   }
 
   function sourceTag() {
     var p = new URLSearchParams(location.search);
     var parts = [p.get("utm_source") || p.get("src"), p.get("utm_campaign")].filter(Boolean);
     if (parts.length) return parts.join("/").slice(0, 100);
-    if (document.referrer) {
-      try { return ("ref:" + new URL(document.referrer).hostname).slice(0, 100); } catch (e) {}
-    }
+    if (document.referrer) { try { return ("ref:" + new URL(document.referrer).hostname).slice(0, 100); } catch (e) {} }
     return null;
   }
 
-  function showSuccess() {
-    form.hidden = true;
-    joinHead.hidden = true;
-    success.hidden = false;
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    document.getElementById("join").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-    document.getElementById("ok-h").focus({ preventScroll: true });
+  function showDone() {
+    intro.hidden = true; wizard.hidden = true; done.hidden = false;
+    window.scrollTo(0, 0);
+    $("done-h").focus({ preventScroll: true });
   }
 
-  form.addEventListener("change", function (e) {
-    var n = e.target.name;
-    if (n === "contact_type") {
-      hideErr("contact");
-      updateContactField();
-      contactInput.value = "";
-      return;
-    }
-    if (e.target.id === "p-other") {
-      otherInput.hidden = !e.target.checked;
-      if (e.target.checked) otherInput.focus();
-    }
-    if (n) hideErr(n);
-  });
-
-  form.addEventListener("input", function (e) {
-    if (e.target.name === "name" || e.target.name === "contact") hideErr(e.target.name);
-  });
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  function submit() {
     if (busy) return;
-    netErr.hidden = true;
-
-    var fd = new FormData(form);
-    var v = validate(fd);
-    if (!v.ok) {
-      if (v.focus) v.focus.focus();
-      return;
+    clearError();
+    var name = nameEl.value.trim();
+    var raw = contactEl.value.trim();
+    var contact;
+    if (!name) { showError("err_name"); nameEl.focus(); return; }
+    if (contactType === "email") {
+      contact = toLatinDigits(raw);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) { showError("err_email"); contactEl.focus(); return; }
+    } else {
+      contact = toLatinDigits(raw).replace(/[\s\-().‎‏]/g, "");
+      if (contact.indexOf("00") === 0) contact = "+" + contact.slice(2);
+      if (!/^\+\d{7,15}$/.test(contact)) { showError("err_phone"); contactEl.focus(); return; }
     }
-    if (String(fd.get("company") || "").trim()) {
-      showSuccess();
-      return;
-    }
+    if ($("f-company").value.trim()) { showDone(); return; }
 
-    var products = fd.getAll("products");
     var payload = {
-      name: String(fd.get("name")).trim().slice(0, 80),
-      contact: v.contact.slice(0, 120),
-      contact_type: contactType(),
-      country: String(fd.get("country")),
-      pickup_city: String(fd.get("pickup_city")),
-      products: products,
-      other_products: products.indexOf("other") > -1 ? (String(fd.get("other_products") || "").trim().slice(0, 300) || null) : null,
-      frequency: fd.get("frequency"),
-      price_10: fd.get("price_10"),
-      monthly_spend: fd.get("monthly_spend") || null,
+      name: name.slice(0, 80),
+      contact: contact.slice(0, 120),
+      contact_type: contactType,
+      country: answers.country,
+      pickup_city: answers.pickup_city,
+      products: answers.products.slice(),
+      other_products: answers.products.indexOf("other") > -1 ? (otherEl.value.trim().slice(0, 300) || null) : null,
+      frequency: answers.frequency,
+      price_10: answers.price_10,
+      monthly_spend: null,
       lang: lang,
       source: sourceTag()
     };
 
     busy = true;
-    submitBtn.disabled = true;
-    submitBtn.textContent = t("submitting");
-
+    nextBtn.disabled = true;
+    nextBtn.textContent = t("submitting");
     fetch(SUPABASE_URL + "/rest/v1/waitlist", {
       method: "POST",
-      headers: {
-        "apikey": SUPABASE_KEY,
-        "Content-Type": "application/json",
-        "Prefer": "return=minimal"
-      },
+      headers: { "apikey": SUPABASE_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
       body: JSON.stringify(payload)
     }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
-      showSuccess();
+      showDone();
     }).catch(function () {
-      netErr.dataset.msg = "err_network";
-      netErr.textContent = t("err_network");
-      netErr.hidden = false;
+      showError("err_network");
     }).then(function () {
       busy = false;
-      submitBtn.disabled = false;
-      submitBtn.textContent = t("submit");
+      nextBtn.disabled = false;
+      nextBtn.textContent = t(nextBtn.dataset.i18n);
+    });
+  }
+
+  function applyLang(next) {
+    lang = LANGS[next] ? next : "en";
+    document.documentElement.lang = LANGS[lang].code;
+    document.documentElement.dir = LANGS[lang].dir;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      if (el === nextBtn && busy) return;
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) { el.placeholder = t(el.dataset.i18nPh); });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+    document.querySelectorAll(".lang button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+    if (!errEl.hidden && errEl.dataset.msg) errEl.textContent = t(errEl.dataset.msg);
+    $("wa-share").href = "https://wa.me/?text=" + encodeURIComponent(t("share_text") + " " + shareUrl);
+    $("share-url").value = shareUrl;
+    renderStep(false);
+    try { localStorage.setItem("darman-lang", lang); } catch (e) {}
+  }
+
+  $("start").addEventListener("click", function () {
+    intro.hidden = true; wizard.hidden = false; go(step);
+  });
+  $("back").addEventListener("click", function () { go(step - 1); });
+  nextBtn.addEventListener("click", function () {
+    var s = STEPS[step];
+    if (s.type === "multi") {
+      if (!answers[s.id].length) { showError("err_pick"); return; }
+      go(step + 1);
+    } else if (s.type === "contact") {
+      submit();
+    }
+  });
+  [$("ct-wa"), $("ct-email")].forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (contactType === b.dataset.ct) return;
+      contactType = b.dataset.ct;
+      contactEl.value = "";
+      clearError();
+      updateContactField();
+      contactEl.focus();
     });
   });
-
+  [nameEl, contactEl].forEach(function (el) {
+    el.addEventListener("input", clearError);
+    el.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); submit(); } });
+  });
   document.querySelectorAll(".lang button").forEach(function (b) {
     b.addEventListener("click", function () { applyLang(b.dataset.lang); });
   });
-
-  copyBtn.addEventListener("click", function () {
-    function done() {
-      copyBtn.textContent = t("copied");
-      setTimeout(function () { copyBtn.textContent = t("copy_link"); }, 2000);
-    }
-    function fallback() {
-      shareInput.focus();
-      shareInput.select();
-    }
+  $("copy-btn").addEventListener("click", function () {
+    var btn = this, input = $("share-url");
+    function ok() { btn.textContent = t("copied"); setTimeout(function () { btn.textContent = t("copy_link"); }, 2000); }
+    function fallback() { input.focus(); input.select(); }
     try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(shareUrl).then(done, fallback);
-      } else {
-        fallback();
-      }
-    } catch (e) {
-      fallback();
-    }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(shareUrl).then(ok, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
   });
 
   function initialLang() {
     var p = new URLSearchParams(location.search).get("lang");
     if (p && S[p]) return p;
-    try {
-      var saved = localStorage.getItem("darman-lang");
-      if (saved && S[saved]) return saved;
-    } catch (e) {}
+    try { var saved = localStorage.getItem("darman-lang"); if (saved && S[saved]) return saved; } catch (e) {}
     var langs = navigator.languages || [navigator.language || "en"];
     for (var i = 0; i < langs.length; i++) {
       var l = String(langs[i]).toLowerCase();
